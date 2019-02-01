@@ -46,7 +46,7 @@
         <ul class='tabs'>
             <li><a href='#MatchData'>Match Info</a>
             </li>
-            <li><a href='#AutonomousData'>Autonomous</a>
+            <li><a href='#SandstormData'>Sandstorm</a>
             </li>
             <li><a href='#TeleoperatedData'>Teleop</a>
             </li>
@@ -84,66 +84,67 @@
         </div>
 
 
-        <div id="AutonomousData">
+        <div id="SandstormData">
             <!-- ------------------------------------- -->
-            <!-- ----------Autonomous Period---------- -->
+            <!-- ----------Sandstorm Period---------- -->
             <!-- ------------------------------------- -->
 
             <!-- Need to add starting location selector here -->
             <div id=fuelAndGears>
-                <div id="autoScoring">
-                    <div id="autoScoring_left" >
-                        <h3>Fuel</h3>
-                        <div id="autoHighGoal">High Goal:
-                            <button onclick="ballScore('auto', 'high', 1);">1</button>
-                            <button onclick="ballScore('auto', 'high', 5);">5</button>
-                            <button onclick="ballScore('auto', 'high', 10);">10</button>
+                <div id="sandstormScoring">
+                    <div id="sandstormScoring_left" >
+                        <h3>Scoring</h3>
+                        <div id="sandstormCargoInCargoShip">Cargo Ship:
+                            <button onclick="cargoScore('sandstorm', 'cargo ship', 1);">Cargo</button>
                         </div>  
 
-                        High Balls Scored: <a id="highBallsScoredAutoDisplay">0</a>
+                        Cargo In Cargo Ship Scored: <a id="cargoInCargoShipScoredSandstormDisplay">0</a>
                         <br>
-                        <div id="autoLowGoal">Low Goal:
-                            <button onclick="ballScore('auto', 'low', 1);">1</button>
-                            <button onclick="ballScore('auto', 'low', 5);">5</button>
-                            <button onclick="ballScore('auto', 'low', 10);">10</button>
-                        </div>
-                        
-                        Low Balls Scored: <a id="lowBallsScoredAutoDisplay">0</a>
+                        <div id="sandstormCargoInRocket">Rocket:
+                            <button onclick="cargoScore('sandstorm', 'high', 1);">Cargo High</button>
+							<button onclick="cargoScore('sandstorm', 'middle', 1);">Cargo Middle</button>
+							<button onclick="cargoScore('sandstorm', 'low', 1);">Cargo Low</button>
+                        </div>  
+
+                        Cargo In High Rocket Scored: <a id="cargoInHighRocketScoredSandstormDisplay">0</a>
+						<br>
+						Cargo In Middle Rocket Scored: <a id="cargoInMiddleRocketScoredSandstormDisplay">0</a>
+						<br>
+						Cargo In Low Rocket Scored: <a id="cargoInLowRocketScoredSandstormDisplay">0</a>
                         <br>
-                        <button onclick="undoBallScore('auto');">Undo</button>
+                        <button onclick="undoCargoScore('sandstorm');">Undo</button>
                         <br>
                     </div>
-                    <div id="autoScoring_center" >
+                    <div id="sandstormScoring_center" >
                         <h3>Gears</h3>
-                        <div id="autoGear">Gears:
-                            <button onclick="gearScore('auto', 'side');">Side Lift</button>
-                            <button onclick="gearScore('auto', 'center');">Center Lift</button>
+                        <div id="sandstormGear">Gears:
+                            <button onclick="gearScore('sandstorm', 'side');">Side Lift</button>
+                            <button onclick="gearScore('sandstorm', 'center');">Center Lift</button>
                         </div>
-                        Gears Delivered: <a id="gearsDisplayAuto">0</a>
+                        Gears Delivered: <a id="gearsDisplaySandstorm">0</a>
                         <br>
-                        <button onclick="undoGearScore('auto');">Undo</button>
+                        <button onclick="undoGearScore('sandstorm');">Undo</button>
                         <br>
                     </div>
-                    <div id="autoScoring_right">
+                    <div id="sandstormScoring_right">
                         <h3>Starting Position</h3>
                         <form action=" ">
-                            <input id="startingPositionBoiler" type="radio" name="position"> Boiler Side<br>
-                            <input id="startingPositionCenter" type="radio" name="position"> Center<br>
-                            <input id="startingPositionLoading" type="radio" name="position"> Loading Side<br>
+                            <input id="startingPositionLevel1" type="radio" name="position"> Level 1<br>
+                            <input id="startingPositionLevel2" type="radio" name="position"> Level 2<br>
                         </form>
                         <br>
                         Crossed Baseline: <input type="checkbox" id="crossedBaseline" onchange="updateData();">
                         <br>
-                        Hopper Pushed: <input type="checkbox" id="hopperPushedAuto" onchange="updateData();">
+                        Hopper Pushed: <input type="checkbox" id="hopperPushedSandstorm" onchange="updateData();">
                         <br><br>
                         
                         <h3>Penalties</h3>
-                        <button onclick="penalty('auto', 'penalty');">Penalty</button>
-                        <button onclick="penalty('auto', 'technical');">Technical Foul</button>
+                        <button onclick="penalty('sandstorm', 'penalty');">Penalty</button>
+                        <button onclick="penalty('sandstorm', 'technical');">Technical Foul</button>
                         <br>
-                        <a>Penalties: </a><a id="penaltyDisplayAuto">0</a>
+                        <a>Penalties: </a><a id="penaltyDisplaySandstorm">0</a>
                         <br>
-                        <a>Technical Fouls: </a><a id="technicalDisplayAuto">0</a>
+                        <a>Technical Fouls: </a><a id="technicalDisplaySandstorm">0</a>
                         <br>
                         <button onclick="undoPenalty();">Undo Penalty</button>
                     </div>
@@ -158,36 +159,32 @@
             <!-- --------------------------------------- -->
 
             <div id="teleopScoring">
-                <div id="teleopScoring_left">
-                    <h3>Fuel</h3>
-                    <div id="teleHighGoal">High Goal:
-                        <button onclick="ballScore('teleop', 'high', 1);">1</button>
-                        <button onclick="ballScore('teleop', 'high', 5);">5</button>
-                        <button onclick="ballScore('teleop', 'high', 10);">10</button>
+                <div id="teleopScoring_left" >
+                        <h3>Scoring</h3>
+                        <div id="teleopCargoInCargoShip">Cargo Ship:
+                            <button onclick="cargoScore('teleop', 'cargo ship', 1);">Cargo</button>
+                        </div>  
+
+                        Cargo In Cargo Ship Scored: <a id="cargoInCargoShipScoredTeleopDisplay">0</a>
+                        <br>
+                        <div id="teleopCargoInRocket">Rocket:
+                            <button onclick="cargoScore('teleop', 'high', 1);">Cargo High</button>
+							<button onclick="cargoScore('teleop', 'middle', 1);">Cargo Middle</button>
+							<button onclick="cargoScore('teleop', 'low', 1);">Cargo Low</button>
+                        </div>  
+
+                        Cargo In High Rocket Scored: <a id="cargoInHighRocketScoredTeleopDisplay">0</a>
+						<br>
+						Cargo In Middle Rocket Scored: <a id="cargoInMiddleRocketScoredTeleopDisplay">0</a>
+						<br>
+						Cargo In Low Rocket Scored: <a id="cargoInLowRocketScoredTeleopDisplay">0</a>
+                        <br>
+                        <button onclick="undoCargoScore('teleop');">Undo</button>
+                        <br>
                     </div>
-                    High Balls Scored: <a id="highBallsScoredTeleDisplay">0</a>
-                    <br>
-                    <div id="teleLowGoal">Low Goal:
-                        <button onclick="ballScore('teleop', 'low', 1);">1</button>
-                        <button onclick="ballScore('teleop', 'low', 5);">5</button>
-                        <button onclick="ballScore('teleop', 'low', 10);">10</button>
-                    </div>
-                    Low Balls Scored: <a id="lowBallsScoredTeleDisplay">0</a>
-                    <br>
-                    <button onclick="undoBallScore('teleop');">Undo</button>
-                    <br>
-                    Accuracy: <a id="accuracyDisplay">0%</a>
-                    <div id="shortslider">
-                    <input class="bar" type="range" id ="shootingAccuracy" min="0" max="100" step="25" value ="0" onchange="updateData();">
-                        <span class="highlight"></span>
-                    </div>
-                    <br>
-                    Ground Fuel Pickup: <input type="checkbox" id="groundPickupFuel" onchange="updateData();">
-                    <br><br>
-                </div>
                 <div id="teleopScoring_center">
                     <h3>Gears</h3>
-                    <div id="AutoGear">Gears:
+                    <div id="SandstormGear">Gears:
                         <button onclick="gearScore('teleop', 'side');">Side Lift</button>
                         <button onclick="gearScore('teleop', 'center');">Center Lift</button>
                     </div>

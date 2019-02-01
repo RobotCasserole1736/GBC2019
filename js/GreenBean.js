@@ -6,12 +6,12 @@
 
 window.onload=function(){updateData()};
 
-var fuel_Stack = new Array();
-fuel_Stack['auto'] = new Array();
-fuel_Stack['teleop'] = new Array();
+var cargo_Stack = new Array();
+cargo_Stack['sandstorm'] = new Array();
+cargo_Stack['teleop'] = new Array();
 
 var gear_Stack = new Array();
-gear_Stack['auto'] = new Array();
+gear_Stack['sandstorm'] = new Array();
 gear_Stack['teleop'] = new Array();
 
 var penalty_stack = new Array();
@@ -22,13 +22,13 @@ var overallRatingText = ["Do Not Pick", "Below Average", "Average", "Top Team"];
 
 var unsubmittedData = new Array();
 
-function ballScore(period, type, count){
-	fuel_Stack[period].push([type,count]);
+function cargoScore(period, type, count){
+	cargo_Stack[period].push([type,count]);
 	updateData();
 };
 
-function undoBallScore(period){
-	fuel_Stack[period].pop();
+function undoCargoScore(period){
+	cargo_Stack[period].pop();
 	updateData();
 };
 
@@ -59,23 +59,36 @@ function undoPenalty(){
  */
 function updateData()
 {
-	var autoLowCount = 0;
-	var autoHighCount = 0;
-	var teleopLowCount = 0;
-	var teleopHighCount = 0;
-	for(var i = 0; i< fuel_Stack['auto'].length; i++){
-		if(fuel_Stack['auto'][i][0] == 'low')
-			autoLowCount += fuel_Stack['auto'][i][1];
-		else
-			autoHighCount += fuel_Stack['auto'][i][1];
+	var sandstormCargoShipCount_Cargo = 0;
+	var sandstormRocketHighCount_Cargo = 0;
+	var sandstormRocketMiddleCount_Cargo = 0;
+	var sandstormRocketLowCount_Cargo = 0;
+	var teleopCargoShipCount_Cargo = 0;
+	var teleopRocketHighCount_Cargo = 0;
+	var teleopRocketMiddleCount_Cargo = 0;
+	var teleopRocketLowCount_Cargo = 0;
+	
+	for(var i = 0; i< cargo_Stack['sandstorm'].length; i++){
+		if(cargo_Stack['sandstorm'][i][0] == 'cargo ship')
+			sandstormCargoShipCount_Cargo += cargo_Stack['sandstorm'][i][1];
+		else if(cargo_Stack['sandstorm'][i][0] == 'high')
+			sandstormRocketHighCount_Cargo += cargo_Stack['sandstorm'][i][1];
+		else if(cargo_Stack['sandstorm'][i][0] == 'middle')
+			sandstormRocketMiddleCount_Cargo += cargo_Stack['sandstorm'][i][1];
+		else if(cargo_Stack['sandstorm'][i][0] == 'low')
+			sandstormRocketLowCount_Cargo += cargo_Stack['sandstorm'][i][1];
 	}
-	for(var i = 0; i< fuel_Stack['teleop'].length; i++){
-		if(fuel_Stack['teleop'][i][0] == 'low')
-			teleopLowCount += fuel_Stack['teleop'][i][1];
-		else
-			teleopHighCount += fuel_Stack['teleop'][i][1];
+	for(var i = 0; i< cargo_Stack['teleop'].length; i++){
+		if(cargo_Stack['teleop'][i][0] == 'cargo ship')
+			teleopCargoShipCount_Cargo += cargo_Stack['teleop'][i][1];
+		else if(cargo_Stack['teleop'][i][0] == 'high')
+			teleopRocketHighCount_Cargo += cargo_Stack['teleop'][i][1];
+		else if(cargo_Stack['teleop'][i][0] == 'middle')
+			teleopRocketMiddleCount_Cargo += cargo_Stack['teleop'][i][1];
+		else if(cargo_Stack['teleop'][i][0] == 'low')
+			teleopRocketLowCount_Cargo += cargo_Stack['teleop'][i][1];
 	}
-	var autoGearCount = gear_Stack['auto'].length;
+	var sandstormGearCount = gear_Stack['sandstorm'].length;
 	var teleopGearCount = gear_Stack['teleop'].length;
 	
 	var penaltyCount = 0;
@@ -86,15 +99,21 @@ function updateData()
 		else
 			technicalCount++;
 	}		
-	// autonomous data
-	document.getElementById('lowBallsScoredAutoDisplay').innerHTML = autoLowCount;
-	document.getElementById('highBallsScoredAutoDisplay').innerHTML = autoHighCount;
-	document.getElementById('gearsDisplayAuto').innerHTML = autoGearCount;
-	document.getElementById('penaltyDisplayAuto').innerHTML = penaltyCount;
-	document.getElementById('technicalDisplayAuto').innerHTML = technicalCount;
+	// sandstorm data
+	document.getElementById('cargoInCargoShipScoredSandstormDisplay').innerHTML = sandstormCargoShipCount_Cargo;
+	document.getElementById('cargoInHighRocketScoredSandstormDisplay').innerHTML = sandstormRocketHighCount_Cargo;
+	document.getElementById('cargoInMiddleRocketScoredSandstormDisplay').innerHTML = sandstormRocketMiddleCount_Cargo;
+	document.getElementById('cargoInLowRocketScoredSandstormDisplay').innerHTML = sandstormRocketLowCount_Cargo;
+	
+	document.getElementById('gearsDisplaySandstorm').innerHTML = sandstormGearCount;
+	document.getElementById('penaltyDisplaySandstorm').innerHTML = penaltyCount;
+	document.getElementById('technicalDisplaySandstorm').innerHTML = technicalCount;
 	// teleop data
-	document.getElementById('highBallsScoredTeleDisplay').innerHTML = teleopHighCount;
-	document.getElementById('lowBallsScoredTeleDisplay').innerHTML = teleopLowCount;
+	document.getElementById('cargoInCargoShipScoredTeleopDisplay').innerHTML = teleopCargoShipCount_Cargo;
+	document.getElementById('cargoInHighRocketScoredTeleopDisplay').innerHTML = teleopRocketHighCount_Cargo;
+	document.getElementById('cargoInMiddleRocketScoredTeleopDisplay').innerHTML = teleopRocketMiddleCount_Cargo;
+	document.getElementById('cargoInLowRocketScoredTeleopDisplay').innerHTML = teleopRocketLowCount_Cargo;
+	
 	document.getElementById('gearsDisplayTele').innerHTML = teleopGearCount;
 	document.getElementById('penaltyDisplayTele').innerHTML = penaltyCount;
 	document.getElementById('technicalDisplayTele').innerHTML = technicalCount;
@@ -115,32 +134,36 @@ function saveData()
 	matchData += document.getElementById("matchNumber").value + ",";
 	matchData += document.getElementById("matchType").value + ",";
 
-	// autonomous tab fields
-	matchData += document.getElementById("highBallsScoredAutoDisplay").innerHTML + ",";
-	matchData += document.getElementById("lowBallsScoredAutoDisplay").innerHTML + ",";
-	var autoGears = [0,0];
-	for(var i = 0; i < gear_Stack["auto"].length; i++)
+	// sandstorm tab fields
+	matchData += document.getElementById('cargoInCargoShipScoredSandstormDisplay').innerHTML + ",";
+	matchData += document.getElementById('cargoInHighRocketScoredSandstormDisplay').innerHTML + ",";
+	matchData += document.getElementById('cargoInMiddleRocketScoredSandstormDisplay').innerHTML + ",";
+	matchData += document.getElementById('cargoInLowRocketScoredSandstormDisplay').innerHTML + ",";
+	
+	var sandstormGears = [0,0];
+	for(var i = 0; i < gear_Stack["sandstorm"].length; i++)
 	{
-		if(gear_Stack["auto"][i] == "center")
-			autoGears[0]++;
+		if(gear_Stack["sandstorm"][i] == "center")
+			sandstormGears[0]++;
 		else
-			autoGears[1]++;
+			sandstormGears[1]++;
 	}
-	matchData += autoGears[0] + "," + autoGears[1] + ",";
-	if(document.getElementById("startingPositionBoiler").checked)
-		matchData += "Boiler,";
-	else if(document.getElementById("startingPositionCenter").checked)
-		matchData += "Center,";
-	else
-		matchData += "Loading,";
+	matchData += sandstormGears[0] + "," + sandstormGears[1] + ",";
+	if(document.getElementById("startingPositionLevel1").checked)
+		matchData += "Lv1,";
+	else if(document.getElementById("startingPositionLevel2").checked)
+		matchData += "Lv2,";
 
 	matchData += document.getElementById("crossedBaseline").checked + ",";
-	matchData += document.getElementById("hopperPushedAuto").checked + ",";
+	matchData += document.getElementById("hopperPushedSandstorm").checked + ",";
 
 
 	// teleop tab fields
-	matchData += document.getElementById("highBallsScoredTeleDisplay").innerHTML + ",";
-	matchData += document.getElementById("lowBallsScoredTeleDisplay").innerHTML + ",";
+	matchData += document.getElementById('cargoInCargoShipScoredTeleopDisplay').innerHTML + ",";
+	matchData += document.getElementById('cargoInHighRocketScoredTeleopDisplay').innerHTML + ",";
+	matchData += document.getElementById('cargoInMiddleRocketScoredTeleopDisplay').innerHTML + ",";
+	matchData += document.getElementById('cargoInLowRocketScoredTeleopDisplay').innerHTML + ",";
+	
 	matchData += document.getElementById("shootingAccuracy").value + ",";
 	matchData += document.getElementById("groundPickupFuel").checked + ",";
 
@@ -190,16 +213,16 @@ function resetForm()
 	document.getElementById("teamNumber").value = "";
 	document.getElementById("matchNumber").value = parseInt(document.getElementById("matchNumber").value) + 1;
 
-	// autonomous data reset
-	fuel_Stack['auto'] = new Array();
-	gear_Stack['auto'] = new Array();
+	// sandstorm data reset
+	fuel_Stack['sandstorm'] = new Array();
+	gear_Stack['sandstorm'] = new Array();
 	document.getElementById("startingPositionBoiler").checked = false;
 	document.getElementById("startingPositionCenter").checked = false;
 	document.getElementById("startingPositionLoading").checked = false;
 	document.getElementById("startingPositionLoading").checked = false;
 	document.getElementById("startingPositionLoading").checked = false;
 	document.getElementById("crossedBaseline").checked = false;
-	document.getElementById("hopperPushedAuto").checked = false;
+	document.getElementById("hopperPushedSandstorm").checked = false;
 
 	// teleop data reset
 	fuel_Stack['teleop'] = new Array();
