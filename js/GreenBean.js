@@ -21,65 +21,78 @@ var defenseText = ["Awful/none", "It's not very effective...", "Average", "It's 
 var overallRatingText = ["Do Not Pick", "Below Average", "Average", "Top Team"];
 
 var unsubmittedData = new Array();
-document.getElementById("TeleoperatedData").addEventListener("keydown",function(){
-	keyReader(event,'teleop');
-});
-document.getElementById("SandstormData").addEventListener("keydown",function(){
-	keyReader(event,'sandstorm');
+
+document.addEventListener("keydown",function(){
+	keyReader(event);
 });
 
-function keyReader(evt, period) {
+
+
+function keyReader(evt) {
+	periodreader=document.getElementsByClassName("active")[0].getAttribute("href")
+
+	if(periodreader=='#SandstormData'){
+		period='sandstorm';
+	}
+	else if(periodreader=='#TeleoperatedData'){
+		period='teleop'
+	}else{
+		period='none'
+	}
+
 	evt = evt || window.event;
-	//Q key
-	if (evt.keyCode == 81) {
-		cargoScore(period, 'cargo ship', 1);
-	}
-	//W key
-	else if (evt.keyCode == 87) {
-		cargoScore(period, 'low', 1);
-	}
-	//E key
-	else if (evt.keyCode == 69) {
-		cargoScore(period, 'middle', 1);
-	}
-	//R key
-	else if (evt.keyCode == 82) {
-		cargoScore(period, 'high', 1);
-	}
-	//A key
-	else if (evt.keyCode == 65) {
-		hatchScore(period, 'cargo ship', 1);
-	}
-	//S key
-	else if (evt.keyCode == 83) {
-		hatchScore(period, 'low', 1);
-	}
-	//D key
-	   else if (evt.keyCode == 68) {
-		hatchScore(period, 'middle', 1);
-	}
-	//F key
-	else if (evt.keyCode == 70) {
-		hatchScore(period, 'high', 1);
-	}
-	//J key
-	else if (evt.keyCode == 74) {
-		penalty(period, 'penalty');
-	}
-	//K key
-	else if (evt.keyCode == 75) {
-		penalty(period, 'technical');
-	}
-	//Space key
-	else if (evt.keyCode == 32) {
-	}
-	//Z key
-	else if (evt.keyCode == 90) {
-		undoCargoScore(period);
-	}
-	//X key
-	else if (evt.keyCode == 88) {
-		undoPenalty();
+	if(period!='none'){
+		//Q key
+		if (evt.keyCode == 81) {
+			cargoScore(period, 'cargo ship', 1);
+		}
+		//W key
+		else if (evt.keyCode == 87) {
+			cargoScore(period, 'low', 1);
+		}
+		//E key
+		else if (evt.keyCode == 69) {
+			cargoScore(period, 'middle', 1);
+		}
+		//R key
+		else if (evt.keyCode == 82) {
+			cargoScore(period, 'high', 1);
+		}
+		//A key
+		else if (evt.keyCode == 65) {
+			hatchScore(period, 'cargo ship', 1);
+		}
+		//S key
+		else if (evt.keyCode == 83) {
+			hatchScore(period, 'low', 1);
+		}
+		//D key
+		   else if (evt.keyCode == 68) {
+			hatchScore(period, 'middle', 1);
+		}
+		//F key
+		else if (evt.keyCode == 70) {
+			hatchScore(period, 'high', 1);
+		}
+		//J key
+		else if (evt.keyCode == 74) {
+			penalty(period, 'penalty');
+		}
+		//K key
+		else if (evt.keyCode == 75) {
+			penalty(period, 'technical');
+		}
+		//Space key
+		else if (evt.keyCode == 32) {
+		}
+		//Z key
+		else if (evt.keyCode == 90) {
+			undoCargoScore(period);
+		}
+		//X key
+		else if (evt.keyCode == 88) {
+			undoPenalty();
+		}
 	}
 }
 function cargoScore(period, type, count){
