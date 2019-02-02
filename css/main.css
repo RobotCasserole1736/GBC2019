@@ -435,7 +435,7 @@ li {
 
 #stacks3 {
     display: inline-block;
-    margin="20px"
+    margin:"20px";
     text-align: right;
 }
 #StartLocation, #TeleopSliders, #TeleScoring, #frm_loading_location, #FeatureComments {

@@ -230,15 +230,37 @@
             <!-- ----------------------------- -->
             <!-- ----------Post Match--------- -->
             <!-- ----------------------------- -->
-            Bad Human Player: <input type="checkbox" id="humanPlayerAbility"">
+
+            <!--Bad Human Player: <input type="checkbox" id="humanPlayerAbility""><br>-->
+            Is Cheesy Poofs: <input type="checkbox" id="isTheyCheezyPoofs">
             <br>
-            Bad Pilot: <input type="checkbox" id="pilotAbility">
+            Can High Place: <input type="checkbox" id="canPlaceHigh">
+            <br>
+            Can Do Mid: <input type="checkbox" id="canPlaceMid">
+            <br>
+            Can Do Low: <input type="checkbox" id="canPlaceLow">
+            <br>
+            Can Do Floor Pickup: <input type="checkbox" id="canFloorPickup">
             <br><br>
+
+            Driver Rating : <a id="driverRatingDisplay">Little or No Movement</a>
+            <div id="shortslider">
+            <input class="bar" type="range" id ="driverRating" min="0" max="3" value ="0" onchange="updateData();">
+            <span class="highlight"></span>
+            </div>
+            <br>
+            Defense Rating : <a id="defenseRatingDisplay">Little or No Movement</a>
+            <div id="shortslider">
+            <input class="bar" type="range" id ="defenseRating" min="0" max="3" value ="0" onchange="updateData();">
+            <span class="highlight"></span>
+            </div>
+            <br>
             Overall Rating : <a id="overallRatingDisplay">Do Not Pick</a>
             <div id="shortslider">
             <input class="bar" type="range" id ="overallRating" min="0" max="3" value ="0" onchange="updateData();">
             <span class="highlight"></span>
             </div>
+            
             <textarea placeholder="Comments" id="comments"></textarea>
             <br>
             <button id="submitReport" onclick="submitReport();">Submit Report</button>
