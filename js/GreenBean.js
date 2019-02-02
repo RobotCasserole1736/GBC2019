@@ -281,6 +281,9 @@ function saveData()
 	matchData += document.getElementById("humanPlayerAbility").checked + ",";
 	matchData += document.getElementById("pilotAbility").checked + ",";
 	matchData += document.getElementById("overallRating").value + ",";
+	matchData += document.getElementById("driveRating").value +",";
+	matchData += document.getElementById("defenseRating").value +",";
+	
 	var comments = document.getElementById("comments").value;
 	comments = comments.replace(",","_"); //Get rid of commas so we don't mess up CSV
 	comments = comments.replace(/(\r\n|\n|\r)/gm,"  ");  // get rid of any newline characters
