@@ -16,9 +16,10 @@ hatch_Stack['teleop'] = new Array();
 
 var penalty_stack = new Array();
 
-var teleDrivingText = ["Little or No Movement", "Poor Driving", "Good Driving", "Exceptional Driving"];
-var defenseText = ["Awful/none", "It's not very effective...", "Average", "It's super effective!"];
 var overallRatingText = ["Do Not Pick", "Below Average", "Average", "Top Team"];
+var defenseRatingText = ["Awful/none", "It's not very effective...", "Average", "It's super effective!"];
+var driverRatingText = ["Little or No Movement", "Poor Driving", "Good Driving", "Exceptional Driving"];
+
 
 var unsubmittedData = new Array();
 document.getElementById("TeleoperatedData").addEventListener("keydown",function(){
@@ -214,6 +215,10 @@ function updateData()
 	document.getElementById('climbTime').innerHTML = document.getElementById('climbSpeedSlider').value + ' seconds';
 	// Post match data
 	document.getElementById('overallRatingDisplay').innerHTML = overallRatingText[parseInt(document.getElementById('overallRating').value)];
+	document.getElementById('defenseRatingDisplay').innerHTML = defenseRatingText[parseInt(document.getElementById('defenseRating').value)];
+	document.getElementById('driverRatingDisplay').innerHTML = driverRatingText[parseInt(document.getElementById('driverRating').value)];
+	
+
 }
 
 
