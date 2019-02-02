@@ -49,31 +49,31 @@ function keyReader(evt) {
 		}
 		//W key
 		else if (evt.keyCode == 87) {
-			cargoScore(period, 'low', 1);
+			cargoScore(period, 'cargo low', 1);
 		}
 		//E key
 		else if (evt.keyCode == 69) {
-			cargoScore(period, 'middle', 1);
+			cargoScore(period, 'cargo middle', 1);
 		}
 		//R key
 		else if (evt.keyCode == 82) {
-			cargoScore(period, 'high', 1);
+			cargoScore(period, 'cargo high', 1);
 		}
 		//A key
 		else if (evt.keyCode == 65) {
-			hatchScore(period, 'cargo ship', 1);
+			hatchScore(period, 'hatch cargo ship', 1);
 		}
 		//S key
 		else if (evt.keyCode == 83) {
-			hatchScore(period, 'low', 1);
+			hatchScore(period, 'hatch low', 1);
 		}
 		//D key
 		   else if (evt.keyCode == 68) {
-			hatchScore(period, 'middle', 1);
+			hatchScore(period, 'hatch middle', 1);
 		}
 		//F key
 		else if (evt.keyCode == 70) {
-			hatchScore(period, 'high', 1);
+			hatchScore(period, 'hatch high', 1);
 		}
 		//J key
 		else if (evt.keyCode == 74) {
@@ -88,7 +88,7 @@ function keyReader(evt) {
 		}
 		//Z key
 		else if (evt.keyCode == 90) {
-			undoCargoScore(period);
+			undoScore(period);
 		}
 		//X key
 		else if (evt.keyCode == 88) {
@@ -167,7 +167,7 @@ function updateData()
 			sandstormRocketHighCount_Hatch += 1;
 		else if(Score_Stack['sandstorm'][i][0] == 'hatch middle')
 			sandstormRocketMiddleCount_Hatch += 1;
-		else if(Score_Stack['sandstorm'][i][0] == 'hatchlow')
+		else if(Score_Stack['sandstorm'][i][0] == 'hatch low')
 			sandstormRocketLowCount_Hatch += 1;
 	}
 	for(var i = 0; i< Score_Stack['teleop'].length; i++){
