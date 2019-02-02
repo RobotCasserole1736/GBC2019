@@ -103,19 +103,19 @@
                             <h3>Scoring</h3>
                             <div id="sandstormCargoInCargoShip">Cargo Ship:
                                     <button onclick="cargoScore('sandstorm', 'cargo ship', 1);">Cargo</button>
-                                    <button onclick="hatchScore('sandstorm', 'cargo ship', 1);">Hatch</button>
+                                    <button onclick="hatchScore('sandstorm', 'hatch cargo ship', 1);">Hatch</button>
                                 </div>  
                             Cargo In Cargo Ship Scored: <a id="cargoInCargoShipScoredSandstormDisplay">0</a>
                             <br>
                             hatch In Cargo Ship Scored: <a id="hatchInCargoShipScoredSandstormDisplay">0</a>
                             <div id="sandstormCargoInRocket">Rocket:
-                                <button onclick="cargoScore('sandstorm', 'high', 1);">Cargo High</button>
-                                <button onclick="cargoScore('sandstorm', 'middle', 1);">Cargo Middle</button>
-                                <button onclick="cargoScore('sandstorm', 'low', 1);">Cargo Low</button>
+                                <button onclick="cargoScore('sandstorm', 'cargo high', 1);">Cargo High</button>
+                                <button onclick="cargoScore('sandstorm', 'cargo middle', 1);">Cargo Middle</button>
+                                <button onclick="cargoScore('sandstorm', 'cargo low', 1);">Cargo Low</button>
                                 <br>
-                                <button onclick="hatchScore('sandstorm', 'high', 1);">Hatch High</button>
-                                <button onclick="hatchScore('sandstorm', 'middle', 1);">Hatch Middle</button>
-                                <button onclick="hatchScore('sandstorm', 'low', 1);">Hatch Low</button>
+                                <button onclick="hatchScore('sandstorm', 'hatch high', 1);">Hatch High</button>
+                                <button onclick="hatchScore('sandstorm', 'hatch middle', 1);">Hatch Middle</button>
+                                <button onclick="hatchScore('sandstorm', 'hatch low', 1);">Hatch Low</button>
                             </div>  
     
                             Cargo In High Rocket Scored: <a id="cargoInHighRocketScoredSandstormDisplay">0</a>
@@ -129,7 +129,7 @@
                             Hatch In Middle Rocket Scored: <a id="hatchInMiddleRocketScoredSandstormDisplay">0</a>
                             <br>
                             Hatch In Low Rocket Scored: <a id="hatchInLowRocketScoredSandstormDisplay">0</a>
-                            <button onclick="undoCargoScore('sandstorm');">Undo</button>
+                            <button onclick="undoScore('sandstorm');">Undo</button>
                             <br>
                         </div>
                     <div id="sandstormScoring_right">
@@ -158,7 +158,7 @@
                         <h3>Scoring</h3>
                         <div id="teleopCargoInCargoShip">Cargo Ship:
                             <button onclick="cargoScore('teleop', 'cargo ship', 1);">Cargo</button>
-                            <button onclick="hatchScore('teleop', 'cargo ship', 1);">Hatch</button>
+                            <button onclick="hatchScore('teleop', 'hatch cargo ship', 1);">Hatch</button>
                         </div>  
 
                         Cargo In Cargo Ship Scored: <a id="cargoInCargoShipScoredTeleopDisplay">0</a>
@@ -166,13 +166,13 @@
                         Hatch In Cargo Ship Scored: <a id="hatchInCargoShipScoredTeleopDisplay">0</a>
                         <br>
                         <div id="teleopCargoInRocket">Rocket:
-                            <button onclick="cargoScore('teleop', 'high', 1);">Cargo High</button>
-							<button onclick="cargoScore('teleop', 'middle', 1);">Cargo Middle</button>
-                            <button onclick="cargoScore('teleop', 'low', 1);">Cargo Low</button>
+                            <button onclick="cargoScore('teleop', 'cargo high', 1);">Cargo High</button>
+							<button onclick="cargoScore('teleop', 'cargo middle', 1);">Cargo Middle</button>
+                            <button onclick="cargoScore('teleop', 'cargo low', 1);">Cargo Low</button>
                             <br>
-                            <button onclick="hatchScore('teleop', 'high', 1);">Hatch High</button>
-							<button onclick="hatchScore('teleop', 'middle', 1);">Hatch Middle</button>
-                            <button onclick="hatchScore('teleop', 'low', 1);">Hatch Low</button>
+                            <button onclick="hatchScore('teleop', 'hatch high', 1);">Hatch High</button>
+							<button onclick="hatchScore('teleop', 'hatch middle', 1);">Hatch Middle</button>
+                            <button onclick="hatchScore('teleop', 'hatch low', 1);">Hatch Low</button>
                             <br>
                         </div>  
 
@@ -187,7 +187,7 @@
                         Hatch In Middle Rocket Scored: <a id="hatchInMiddleRocketScoredTeleopDisplay">0</a>
                         <br>
                         Hatch In Low Rocket Scored: <a id="hatchInLowRocketScoredTeleopDisplay">0</a>
-                        <button onclick="undoCargoScore('teleop');">Undo</button>
+                        <button onclick="undoScore('teleop');">Undo</button>
                         <br>
                     </div>
                 <div id="teleopScoring_center">

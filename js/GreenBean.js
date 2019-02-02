@@ -6,13 +6,13 @@
 
 window.onload=function(){updateData()};
 
-var cargo_Stack = new Array();
-cargo_Stack['sandstorm'] = new Array();
-cargo_Stack['teleop'] = new Array();
+var Score_Stack = new Array();
+Score_Stack['sandstorm'] = new Array();
+Score_Stack['teleop'] = new Array();
 
-var hatch_Stack = new Array();
-hatch_Stack['sandstorm'] = new Array();
-hatch_Stack['teleop'] = new Array();
+var Score_Stack = new Array();
+Score_Stack['sandstorm'] = new Array();
+Score_Stack['teleop'] = new Array();
 
 var penalty_stack = new Array();
 
@@ -83,22 +83,22 @@ function keyReader(evt, period) {
 	}
 }
 function cargoScore(period, type, count){
-	cargo_Stack[period].push([type,count]);
+	Score_Stack[period].push([type,count]);
 	updateData();
 };
 
-function undoCargoScore(period){
-	cargo_Stack[period].pop();
+function undoScore(period){
+	Score_Stack[period].pop();
 	updateData();
 };
 
 function hatchScore(period, type, count){
-	hatch_Stack[period].push([type,count]);
+	Score_Stack[period].push([type,count]);
 	updateData();
 };
 
 function undoGearScore(period){
-	hatch_Stack[period].pop();
+	Score_Stack[period].pop();
 	updateData();
 };
 
@@ -136,45 +136,45 @@ function updateData()
 	var teleopRocketMiddleCount_Hatch = 0;
 	var teleopRocketLowCount_Hatch = 0;
 	
-	for(var i = 0; i< cargo_Stack['sandstorm'].length; i++){
-		if(cargo_Stack['sandstorm'][i][0] == 'cargo ship')
+	for(var i = 0; i< Score_Stack['sandstorm'].length; i++){
+		if(Score_Stack['sandstorm'][i][0] == 'cargo ship')
 			sandstormCargoShipCount_Cargo += 1;
-		else if(cargo_Stack['sandstorm'][i][0] == 'high')
+		else if(Score_Stack['sandstorm'][i][0] == 'cargo high')
 			sandstormRocketHighCount_Cargo += 1;
-		else if(cargo_Stack['sandstorm'][i][0] == 'middle')
+		else if(Score_Stack['sandstorm'][i][0] == 'cargo middle')
 			sandstormRocketMiddleCount_Cargo += 1;
-		else if(cargo_Stack['sandstorm'][i][0] == 'low')
+		else if(Score_Stack['sandstorm'][i][0] == 'cargo low')
 			sandstormRocketLowCount_Cargo += 1;
 	}
-	for(var i = 0; i< hatch_Stack['sandstorm'].length; i++){
-		if(hatch_Stack['sandstorm'][i][0] == 'cargo ship')
+	for(var i = 0; i< Score_Stack['sandstorm'].length; i++){
+		if(Score_Stack['sandstorm'][i][0] == 'hatch cargo ship')
 			sandstormCargoShipCount_Hatch += 1;
-		else if(hatch_Stack['sandstorm'][i][0] == 'high')
+		else if(Score_Stack['sandstorm'][i][0] == 'hatch high')
 			sandstormRocketHighCount_Hatch += 1;
-		else if(hatch_Stack['sandstorm'][i][0] == 'middle')
+		else if(Score_Stack['sandstorm'][i][0] == 'hatch middle')
 			sandstormRocketMiddleCount_Hatch += 1;
-		else if(hatch_Stack['sandstorm'][i][0] == 'low')
+		else if(Score_Stack['sandstorm'][i][0] == 'hatchlow')
 			sandstormRocketLowCount_Hatch += 1;
 	}
-	for(var i = 0; i< cargo_Stack['teleop'].length; i++){
-		if(cargo_Stack['teleop'][i][0] == 'cargo ship')
-			teleopCargoShipCount_Cargo += cargo_Stack['teleop'][i][1];
-		else if(cargo_Stack['teleop'][i][0] == 'high')
-			teleopRocketHighCount_Cargo += cargo_Stack['teleop'][i][1];
-		else if(cargo_Stack['teleop'][i][0] == 'middle')
-			teleopRocketMiddleCount_Cargo += cargo_Stack['teleop'][i][1];
-		else if(cargo_Stack['teleop'][i][0] == 'low')
-			teleopRocketLowCount_Cargo += cargo_Stack['teleop'][i][1];
+	for(var i = 0; i< Score_Stack['teleop'].length; i++){
+		if(Score_Stack['teleop'][i][0] == 'cargo ship')
+			teleopCargoShipCount_Cargo += Score_Stack['teleop'][i][1];
+		else if(Score_Stack['teleop'][i][0] == 'cargo high')
+			teleopRocketHighCount_Cargo += Score_Stack['teleop'][i][1];
+		else if(Score_Stack['teleop'][i][0] == 'cargo middle')
+			teleopRocketMiddleCount_Cargo += Score_Stack['teleop'][i][1];
+		else if(Score_Stack['teleop'][i][0] == 'cargo low')
+			teleopRocketLowCount_Cargo += Score_Stack['teleop'][i][1];
 	}
-	for(var i = 0; i< hatch_Stack['teleop'].length; i++){
-		if(hatch_Stack['teleop'][i][0] == 'cargo ship')
-			teleopCargoShipCount_Hatch += hatch_Stack['teleop'][i][1];
-		else if(hatch_Stack['teleop'][i][0] == 'high')
-			teleopRocketHighCount_Hatch += hatch_Stack['teleop'][i][1];
-		else if(hatch_Stack['teleop'][i][0] == 'middle')
-			teleopRocketMiddleCount_Hatch += hatch_Stack['teleop'][i][1];
-		else if(hatch_Stack['teleop'][i][0] == 'low')
-			teleopRocketLowCount_Hatch += hatch_Stack['teleop'][i][1];
+	for(var i = 0; i< Score_Stack['teleop'].length; i++){
+		if(Score_Stack['teleop'][i][0] == 'hatch cargo ship')
+			teleopCargoShipCount_Hatch += Score_Stack['teleop'][i][1];
+		else if(Score_Stack['teleop'][i][0] == 'hatch high')
+			teleopRocketHighCount_Hatch += Score_Stack['teleop'][i][1];
+		else if(Score_Stack['teleop'][i][0] == 'hatch middle')
+			teleopRocketMiddleCount_Hatch += Score_Stack['teleop'][i][1];
+		else if(Score_Stack['teleop'][i][0] == 'hatch low')
+			teleopRocketLowCount_Hatch += Score_Stack['teleop'][i][1];
 	}
 
 	var penaltyCount = 0;
@@ -300,7 +300,7 @@ function resetForm()
 
 	// sandstorm data reset
 	fuel_Stack['sandstorm'] = new Array();
-	hatch_Stack['sandstorm'] = new Array();
+	Score_Stack['sandstorm'] = new Array();
 	document.getElementById("startingPositionBoiler").checked = false;
 	document.getElementById("startingPositionCenter").checked = false;
 	document.getElementById("startingPositionLoading").checked = false;
@@ -311,7 +311,7 @@ function resetForm()
 
 	// teleop data reset
 	fuel_Stack['teleop'] = new Array();
-	hatch_Stack['teleop'] = new Array();
+	Score_Stack['teleop'] = new Array();
 	document.getElementById("shootingAccuracy").value = 0;
 	document.getElementById("groundPickupFuel").checked = false;
 	document.getElementById("groundPickupGear").checked = false;
