@@ -213,14 +213,15 @@
                 </div>
                 <div id="teleopScoring_right">
                     <h3>Penalty</h3>
-                    <button onclick="penalty('teleop', 'penalty');">Penalty (J)</button>
-                    <button onclick="penalty('teleop', 'technical');">Technical Foul (K))</button>
+                    <div class="tooltip"><button onclick="penalty('teleop', 'penalty');">Penalty (J)</button><span class="tooltiptext">The robot got a penalty.</span></div>
+                    
+                    <div class="tooltip"><button onclick="penalty('teleop', 'technical');">Technical Foul (K)</button><span class="tooltiptext">The robot got a tech foul.</span></div>
                     <br>
                     Penalties: <a id="penaltyDisplayTele">0</a>
                     <br>
                     Technical Fouls: <a id="technicalDisplayTele">0</a>
                     <br>
-                    <button onclick="undoPenalty();">Undo Penalty (X)</button>
+                    <div class="tooltip"><button onclick="undoPenalty();">Undo Penalty (X)</button><span class="tooltiptext">For when you accidentally gave out a foul.</span></div>
                     <br>
                     </div>
                 </div>
