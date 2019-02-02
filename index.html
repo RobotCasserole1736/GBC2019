@@ -103,45 +103,45 @@
                             <h3>Scoring</h3>
                             <div id="sandstormCargoInCargoShip">Cargo Ship:
                                     <br>
-                                    <button onclick="cargoScore('sandstorm', 'cargo ship', 1);">Cargo</button>
+                                    <button onclick="cargoScore('sandstorm', 'cargo ship', 1);">Cargo (Q)</button>
                                     Cargo In Cargo Ship Scored: <a id="cargoInCargoShipScoredSandstormDisplay">0</a>
                                     <br>
-                                    <button onclick="hatchScore('sandstorm', 'hatch cargo ship', 1);">Hatch</button>
-                                    hatch In Cargo Ship Scored: <a id="hatchInCargoShipScoredSandstormDisplay">0</a>
+                                    <button onclick="hatchScore('sandstorm', 'hatch cargo ship', 1);">Hatch (A)</button>
+                                    Hatch In Cargo Ship Scored: <a id="hatchInCargoShipScoredSandstormDisplay">0</a>
                                 </div>  
                             <div id="sandstormCargoInRocket">Rocket:
                                 <br>
-                                <button onclick="cargoScore('sandstorm', 'cargo high', 1);">Cargo High</button>
-                                Cargo In High Rocket Scored: <a id="cargoInHighRocketScoredSandstormDisplay">0</a>
-                                <br>
-                                <button onclick="cargoScore('sandstorm', 'cargo middle', 1);">Cargo Middle</button>
-                                Cargo In Middle Rocket Scored: <a id="cargoInMiddleRocketScoredSandstormDisplay">0</a>
-                                <br>
-                                <button onclick="cargoScore('sandstorm', 'cargo low', 1);">Cargo Low</button>
+                                <button onclick="cargoScore('sandstorm', 'cargo low', 1);">Cargo Low (W)</button>
                                 Cargo In Low Rocket Scored: <a id="cargoInLowRocketScoredSandstormDisplay">0</a>
                                 <br>
-                                <button onclick="hatchScore('sandstorm', 'hatch high', 1);">Hatch High</button>
-                                Hatch In High Rocket Scored: <a id="hatchInHighRocketScoredSandstormDisplay">0</a>
+                                <button onclick="cargoScore('sandstorm', 'cargo middle', 1);">Cargo Middle (E)</button>
+                                Cargo In Middle Rocket Scored: <a id="cargoInMiddleRocketScoredSandstormDisplay">0</a>
                                 <br>
-                                <button onclick="hatchScore('sandstorm', 'hatch middle', 1);">Hatch Middle</button>
+                                <button onclick="cargoScore('sandstorm', 'cargo high', 1);">Cargo High (R)</button>
+                                Cargo In High Rocket Scored: <a id="cargoInHighRocketScoredSandstormDisplay">0</a>
+                                <br>
+                                <button onclick="hatchScore('sandstorm', 'hatch low', 1);">Hatch Low (S)</button>
+                                Hatch In Low Rocket Scored: <a id="hatchInLowRocketScoredSandstormDisplay">0</a>
+                                <br>
+                                <button onclick="hatchScore('sandstorm', 'hatch middle', 1);">Hatch Middle (D)</button>
                                 Hatch In Middle Rocket Scored: <a id="hatchInMiddleRocketScoredSandstormDisplay">0</a>
                                 <br>
-                                <button onclick="hatchScore('sandstorm', 'hatch low', 1);">Hatch Low</button>
-                                Hatch In Low Rocket Scored: <a id="hatchInLowRocketScoredSandstormDisplay">0</a>
+                                <button onclick="hatchScore('sandstorm', 'hatch high', 1);">Hatch High (F)</button>
+                                Hatch In High Rocket Scored: <a id="hatchInHighRocketScoredSandstormDisplay">0</a>
                             </div>  
-                            <button onclick="undoScore('sandstorm');">Undo</button>
+                            <button onclick="undoScore('sandstorm');">Undo (Z)</button>
                             <br>
                         </div>
                     <div id="sandstormScoring_right">
                         <h3>Penalties</h3>
-                        <button onclick="penalty('sandstorm', 'penalty');">Penalty</button>
-                        <button onclick="penalty('sandstorm', 'technical');">Technical Foul</button>
+                        <button onclick="penalty('sandstorm', 'penalty');">Penalty (J)</button>
+                        <button onclick="penalty('sandstorm', 'technical');">Technical Foul(K)</button>
                         <br>
                         <a>Penalties: </a><a id="penaltyDisplaySandstorm">0</a>
                         <br>
                         <a>Technical Fouls: </a><a id="technicalDisplaySandstorm">0</a>
                         <br>
-                        <button onclick="undoPenalty();">Undo Penalty</button>
+                        <button onclick="undoPenalty();">Undo Penalty (X)</button>
                     </div>
                 </div>
             </div>   
@@ -158,35 +158,36 @@
                         <h3>Scoring</h3>
                         <div id="teleopCargoInCargoShip">Cargo Ship:
                             <br>
-                            <button onclick="cargoScore('teleop', 'cargo ship', 1);">Cargo</button>
+                            <button onclick="cargoScore('teleop', 'cargo ship', 1);">Cargo (Q)</button>
                             Cargo In Cargo Ship Scored: <a id="cargoInCargoShipScoredTeleopDisplay">0</a>
                             <br>
-                            <button onclick="hatchScore('teleop', 'hatch cargo ship', 1);">Hatch</button>
+                            <button onclick="hatchScore('teleop', 'hatch cargo ship', 1);">Hatch (A)</button>
                             Hatch In Cargo Ship Scored: <a id="hatchInCargoShipScoredTeleopDisplay">0</a>
                             <br>
                         </div>  
                         <div id="teleopCargoInRocket">Rocket:
                             <br>
-                            <button onclick="cargoScore('teleop', 'cargo high', 1);">Cargo High</button>
-                            Cargo In High Rocket Scored: <a id="cargoInHighRocketScoredTeleopDisplay">0</a>
-						    <br>
-                            <button onclick="cargoScore('teleop', 'cargo middle', 1);">Cargo Middle</button>
-                            Cargo In Middle Rocket Scored: <a id="cargoInMiddleRocketScoredTeleopDisplay">0</a>
-                            <br>
-                            <button onclick="cargoScore('teleop', 'cargo low', 1);">Cargo Low</button>
+                            <button onclick="cargoScore('teleop', 'cargo low', 1);">Cargo Low (W)</button>
                             Cargo In Low Rocket Scored: <a id="cargoInLowRocketScoredTeleopDisplay">0</a>
                             <br>
-                            <button onclick="hatchScore('teleop', 'hatch high', 1);">Hatch High</button>
-                            Hatch In High Rocket Scored: <a id="hatchInHighRocketScoredTeleopDisplay">0</a>
+                            <button onclick="cargoScore('teleop', 'cargo middle', 1);">Cargo Middle (E)</button>
+                            Cargo In Middle Rocket Scored: <a id="cargoInMiddleRocketScoredTeleopDisplay">0</a>
                             <br>
-                            <button onclick="hatchScore('teleop', 'hatch middle', 1);">Hatch Middle</button>
-                            Hatch In Middle Rocket Scored: <a id="hatchInMiddleRocketScoredTeleopDisplay">0</a>
+                            <button onclick="cargoScore('teleop', 'cargo high', 1);">Cargo High (R)</button>
+                            Cargo In High Rocket Scored: <a id="cargoInHighRocketScoredTeleopDisplay">0</a>
                             <br>
-                            <button onclick="hatchScore('teleop', 'hatch low', 1);">Hatch Low</button>
+                            <button onclick="hatchScore('teleop', 'hatch low', 1);">Hatch Low (S)</button>
                             Hatch In Low Rocket Scored: <a id="hatchInLowRocketScoredTeleopDisplay">0</a>
                             <br>
+                            <button onclick="hatchScore('teleop', 'hatch middle', 1);">Hatch Middle (D)</button>
+                            Hatch In Middle Rocket Scored: <a id="hatchInMiddleRocketScoredTeleopDisplay">0</a>
+                            <br>
+                            <button onclick="hatchScore('teleop', 'hatch high', 1);">Hatch High (F)</button>
+                            Hatch In High Rocket Scored: <a id="hatchInHighRocketScoredTeleopDisplay">0</a>
+                            <br>
+                            
                         </div>  
-                        <button onclick="undoScore('teleop');">Undo</button>
+                        <button onclick="undoScore('teleop');">Undo (Z)</button>
                         <br>
                     </div>
                 <div id="teleopScoring_center">
@@ -212,14 +213,14 @@
                 </div>
                 <div id="teleopScoring_right">
                     <h3>Penalty</h3>
-                    <button onclick="penalty('teleop', 'penalty');">Penalty</button>
-                    <button onclick="penalty('teleop', 'technical');">Technical Foul</button>
+                    <button onclick="penalty('teleop', 'penalty');">Penalty (J)</button>
+                    <button onclick="penalty('teleop', 'technical');">Technical Foul (K))</button>
                     <br>
                     Penalties: <a id="penaltyDisplayTele">0</a>
                     <br>
                     Technical Fouls: <a id="technicalDisplayTele">0</a>
                     <br>
-                    <button onclick="undoPenalty();">Undo Penalty</button>
+                    <button onclick="undoPenalty();">Undo Penalty (X)</button>
                     <br>
                     </div>
                 </div>
