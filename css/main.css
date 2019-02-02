@@ -100,17 +100,17 @@ textarea {
     margin-top: 15px;
 }
 
-#autoScoring_left {
+#sandstormScoring_left {
     float: left; 
     width: 33%;
 }
 
-#autoScoring_center {
+#sandstormScoring_center {
     float: left; 
     width: 33%;
 }
 
-#autoScoring_right {
+#sandstormScoring_right {
     float: right; 
     width: 33%;
 }
