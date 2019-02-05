@@ -103,55 +103,59 @@
                     </div>
                     <div id="sandstormScoring_center" >
                             <h3>Scoring</h3>
-                            <div id="sandstormCargoInCargoShip">Cargo Ship:
-                                    <br>
-                                    <div class="tooltip">
-                                    <button onclick="cargoScore('sandstorm', 'cargo ship', 1);">Cargo (Q)</button>
-                                    Cargo In Cargo Ship Scored: <a id="cargoInCargoShipScoredSandstormDisplay">0</a>
-                                    <span class="tooltiptext">Did they place cargo in cargo ship?</span></div>
-                                    <br>
-                                    <div class="tooltip">
-                                    <button onclick="hatchScore('sandstorm', 'hatch cargo ship', 1);">Hatch (A)</button>
-                                    Hatch In Cargo Ship Scored: <a id="hatchInCargoShipScoredSandstormDisplay">0</a>
-                                    <span class="tooltiptext">Did they place hatch on cargo ship?</span></div>
-                                </div>  
-                            <div id="sandstormCargoInRocket">Rocket:
-                                <br>
-                                <div class="tooltip">
-                                <button onclick="cargoScore('sandstorm', 'cargo low', 1);">Cargo Low (W)</button>
-                                Cargo In Low Rocket Scored: <a id="cargoInLowRocketScoredSandstormDisplay">0</a>
-                                <span class="tooltiptext">Did they place cargo in lowest level of rocket?</span></div>
-                                <br>
-                                <div class="tooltip">
-                                <button onclick="cargoScore('sandstorm', 'cargo middle', 1);">Cargo Middle (E)</button>
-                                Cargo In Middle Rocket Scored: <a id="cargoInMiddleRocketScoredSandstormDisplay">0</a>
-                                <span class="tooltiptext">Did they place cargo in middle level of rocket?</span></div>
-                                <br>
-                                <div class="tooltip">
-                                <button onclick="cargoScore('sandstorm', 'cargo high', 1);">Cargo High (R)</button>
-                                Cargo In High Rocket Scored: <a id="cargoInHighRocketScoredSandstormDisplay">0</a>
-                                <span class="tooltiptext">Did they place cargo in highest level of rocket?</span></div>
-                                <br>
-                                <div class="tooltip">
-                                <button onclick="hatchScore('sandstorm', 'hatch low', 1);">Hatch Low (S)</button>
-                                Hatch In Low Rocket Scored: <a id="hatchInLowRocketScoredSandstormDisplay">0</a>
-                                <span class="tooltiptext">Did they place hatch on lowest level of rocket?</span></div>
-                                <br>
-                                <div class="tooltip">
-                                <button onclick="hatchScore('sandstorm', 'hatch middle', 1);">Hatch Middle (D)</button>
-                                Hatch In Middle Rocket Scored: <a id="hatchInMiddleRocketScoredSandstormDisplay">0</a>
-                                <span class="tooltiptext">Did they place hatch on middle level of rocket?</span></div>
-                                <br>
-                                <div class="tooltip">
-                                <button onclick="hatchScore('sandstorm', 'hatch high', 1);">Hatch High (F)</button>
-                                Hatch In High Rocket Scored: <a id="hatchInHighRocketScoredSandstormDisplay">0</a>
-                                <span class="tooltiptext">Did they place hatch on highest level of rocket?</span></div>
-                            </div>  
-                            <div class="tooltip">
-                            <button onclick="undoScore('sandstorm');">Undo (Z)</button>
-                            <span class="tooltiptext">For when you make the mistakes.</span></div>
-                            <br>
-                        </div>
+							<table id="sandstormScoringTable" >
+								<td id="sandstormHatches" >Hatches:
+									<div id="sandstormHatchesInCargoShip" >Cargo Ship:
+										<br>
+										<div class="tooltip">
+										<button onclick="hatchScore('sandstorm', 'hatch cargo ship', 1);">Hatch (A)</button>
+										Hatch In Cargo Ship Scored: <a id="hatchInCargoShipScoredSandstormDisplay">0</a>
+										<span class="tooltiptext">Did they place hatch on cargo ship?</span></div>
+									</div>
+									<div id="sandstormHatchesInRocket" >Rocket:
+										<br>
+										<div class="tooltip">
+										<button onclick="hatchScore('sandstorm', 'hatch low', 1);">Hatch Low (S)</button>
+										Hatch In Low Rocket Scored: <a id="hatchInLowRocketScoredSandstormDisplay">0</a>
+										<span class="tooltiptext">Did they place hatch on lowest level of rocket?</span></div>
+										<br>
+										<div class="tooltip">
+										<button onclick="hatchScore('sandstorm', 'hatch middle', 1);">Hatch Middle (D)</button>
+										Hatch In Middle Rocket Scored: <a id="hatchInMiddleRocketScoredSandstormDisplay">0</a>
+										<span class="tooltiptext">Did they place hatch on middle level of rocket?</span></div>
+										<br>
+										<div class="tooltip">
+										<button onclick="hatchScore('sandstorm', 'hatch high', 1);">Hatch High (F)</button>
+										Hatch In High Rocket Scored: <a id="hatchInHighRocketScoredSandstormDisplay">0</a>
+										<span class="tooltiptext">Did they place hatch on highest level of rocket?</span></div>
+									</div>
+								</td>
+								<td id="sandstormCargo" >Cargo:
+									<div id="sandstormCargoInCargoShip" >Cargo Ship:
+										<br>
+										<div class="tooltip">
+										<button onclick="cargoScore('sandstorm', 'cargo ship', 1);">Cargo (Q)</button>
+										Cargo In Cargo Ship Scored: <a id="cargoInCargoShipScoredSandstormDisplay">0</a>
+										<span class="tooltiptext">Did they place cargo in cargo ship?</span></div>
+									</div>
+									<div id="sandstormCargoInRocket" >Rocket:
+										<br>
+										<div class="tooltip">
+										<button onclick="cargoScore('sandstorm', 'cargo low', 1);">Cargo Low (W)</button>
+										Cargo In Low Rocket Scored: <a id="cargoInLowRocketScoredSandstormDisplay">0</a>
+										<span class="tooltiptext">Did they place cargo in lowest level of rocket?</span></div>
+										<br>
+										<div class="tooltip">
+										<button onclick="cargoScore('sandstorm', 'cargo middle', 1);">Cargo Middle (E)</button>
+										Cargo In Middle Rocket Scored: <a id="cargoInMiddleRocketScoredSandstormDisplay">0</a>
+										<span class="tooltiptext">Did they place cargo in middle level of rocket?</span></div>
+										<br>
+										<div class="tooltip">
+										<button onclick="cargoScore('sandstorm', 'cargo high', 1);">Cargo High (R)</button>
+										Cargo In High Rocket Scored: <a id="cargoInHighRocketScoredSandstormDisplay">0</a>
+										<span class="tooltiptext">Did they place cargo in highest level of rocket?</span></div>
+									</div>
+								</td>
                     <div id="sandstormScoring_right">
                         <h3>Penalties</h3>
                         <div class="tooltip">
