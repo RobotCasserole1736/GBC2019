@@ -102,32 +102,32 @@ textarea {
 
 #sandstormScoring_left {
     float: left; 
-    width: 33%;
+    width: 25%;
 }
 
 #sandstormScoring_center {
     float: left; 
-    width: 33%;
+    width: 50%;
 }
 
 #sandstormScoring_right {
     float: right; 
-    width: 33%;
+    width: 25%;
 }
 
 #teleopScoring_left  {
     float: left; 
-    width: 33%;
+    width: 50%;
 }
 
 #teleopScoring_center {
     float: left; 
-    width: 33%;
+    width: 25%;
 }
 
 #teleopScoring_right {
     float: right; 
-    width: 33%;
+    width: 25%;
 }
 
 h1 {
