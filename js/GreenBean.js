@@ -315,8 +315,16 @@ function saveData()
 //This only resets stuff Nick felt should be reset
 function resetForm()
 {
+	$.getJSON('https://www.thebluealliance.com/api/v3/match/2018ilpe_qm17', function(data) {
+		
+	});
+
+
+	var TeamNumbers = JSON.parse('{"blue": {"dq_team_keys": [],"score": 393,"surrogate_team_keys": [],"team_keys": ["frc5442","frc4787","frc1736"]},"red": {"dq_team_keys": [],"score": 237,"surrogate_team_keys": [],"team_keys": ["frc2338","frc2220","frc2704"]}');
+	document.getElementById("TeamNumbers").innerHTML = teamNumber.team_keys; 
+
 	// match data reset
-	document.getElementById("teamNumber").value = "";
+	document.getElementById("teamNumber").value = "TeamNumbers";
 	document.getElementById("matchNumber").value = parseInt(document.getElementById("matchNumber").value) + 1;
 
 	// sandstorm data reset
