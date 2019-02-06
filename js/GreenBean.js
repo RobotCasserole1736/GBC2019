@@ -149,6 +149,8 @@ function updateData()
 	var teleopRocketHighCount_Hatch = 0;
 	var teleopRocketMiddleCount_Hatch = 0;
 	var teleopRocketLowCount_Hatch = 0;
+	//var JSONLink;
+
 	
 	for(var i = 0; i< Score_Stack['sandstorm'].length; i++){
 		if(Score_Stack['sandstorm'][i][0] == 'cargo ship')
@@ -191,6 +193,7 @@ function updateData()
 			teleopRocketLowCount_Hatch += Score_Stack['teleop'][i][1];
 	}
 
+
 	var penaltyCount = 0;
 	var technicalCount = 0;
 	for(var i=0; i< penalty_stack.length; i++){
@@ -231,6 +234,9 @@ function updateData()
 	document.getElementById('defenseRatingDisplay').innerHTML = defenseRatingText[parseInt(document.getElementById('defenseRating').value)];
 	document.getElementById('driverRatingDisplay').innerHTML = driverRatingText[parseInt(document.getElementById('driverRating').value)];
 	
+	/*if(){
+
+	}*/
 
 }
 
@@ -315,8 +321,7 @@ function saveData()
 //This only resets stuff Nick felt should be reset
 function resetForm()
 {
-	$.getJSON('https://www.thebluealliance.com/api/v3/match/2018ilpe_qm17', function(data) {
-		
+	/*$.getJSON('https://www.thebluealliance.com/api/v3/match/2018ilch_qm17'++, function(data) 	
 	});
 
 
@@ -325,7 +330,7 @@ function resetForm()
 
 	// match data reset
 	document.getElementById("teamNumber").value = "TeamNumbers";
-	document.getElementById("matchNumber").value = parseInt(document.getElementById("matchNumber").value) + 1;
+	document.getElementById("matchNumber").value = parseInt(document.getElementById("matchNumber").value) + 1;*/
 
 	// sandstorm data reset
 	fuel_Stack['sandstorm'] = new Array();
