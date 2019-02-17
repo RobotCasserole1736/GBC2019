@@ -22,12 +22,32 @@ var driverRatingText = ["Little or No Movement", "Poor Driving", "Good Driving",
 
 
 var unsubmittedData = new Array();
+var shiftKey=false;
 
 document.addEventListener("keydown",function(){
-	keyReader(event);
+    if(event.keyCode==16){
+        shiftChecker(1);
+    }else{
+        keyReader(event);
+    }
+	
 });
 
+document.addEventListener("keyup",function(){
+    if(event.keyCode==16){
+        shiftChecker(0);
+    }
+	
+});
 
+function shiftChecker(checker){
+    if(checker==1){
+        shiftKey=true;
+    }else{
+        shiftKey=false;
+    }
+    
+}
 
 function keyReader(evt) {
 	periodreader=document.getElementsByClassName("active")[0].getAttribute("href")
@@ -46,34 +66,64 @@ function keyReader(evt) {
         evt.preventDefault();
         if (periodreader=='#MatchData'){
             $("#MatchData").hide();
-            $("#SandstormData").show();
             document.getElementById('MatchDataLink').classList.remove('active');
-            document.getElementById('SandstormDataLink').classList.add('active');
+            if(shiftKey){
+                $("#About").show();
+                document.getElementById('AboutLink').classList.add('active');
+            }else{
+                $("#SandstormData").show();
+                document.getElementById('SandstormDataLink').classList.add('active');
+            }
         }else if(periodreader=='#SandstormData'){
             $("#SandstormData").hide();
-            $("#TeleoperatedData").show();
             document.getElementById('SandstormDataLink').classList.remove('active');
-            document.getElementById('TeleoperatedDataLink').classList.add('active');
+            if(shiftKey){
+                $("#MatchData").show();
+                document.getElementById('MatchDataLink').classList.add('active');
+            }else{
+                $("#TeleoperatedData").show();
+                document.getElementById('TeleoperatedDataLink').classList.add('active');
+            }
         }else if(periodreader=='#TeleoperatedData'){
             $("#TeleoperatedData").hide();
-            $("#PostMatch").show();
             document.getElementById('TeleoperatedDataLink').classList.remove('active');
-            document.getElementById('MatchDataButton').classList.add('active');
+            if (shiftKey){
+                $("#SandstormData").show();
+                document.getElementById('SandstormDataLink').classList.add('active');
+            }else{
+                $("#PostMatch").show();
+                document.getElementById('MatchDataButton').classList.add('active');
+            }
         }else if(periodreader=='#PostMatch'){
             $("#PostMatch").hide();
-            $("#MatchHistory").show();
             document.getElementById('MatchDataButton').classList.remove('active');
-            document.getElementById('MatchHistoryLink').classList.add('active');
+            if(shiftKey){
+                $("#TeleoperatedData").show();
+                document.getElementById('TeleoperatedDataLink').classList.add('active');
+            }else{
+                $("#MatchHistory").show();
+                document.getElementById('MatchHistoryLink').classList.add('active'); 
+            }
         }else if(periodreader=='#MatchHistory'){
             $("#MatchHistory").hide();
-            $("#About").show();
             document.getElementById('MatchHistoryLink').classList.remove('active');
-            document.getElementById('AboutLink').classList.add('active');
+            if(shiftKey){
+                $("#PostMatch").show();
+                document.getElementById('MatchDataButton').classList.add('active');
+            }else{
+                $("#About").show();
+                document.getElementById('AboutLink').classList.add('active');
+            }
         }else if(periodreader=='#About'){
             $("#About").hide();
-            $("#MatchData").show();
             document.getElementById('AboutLink').classList.remove('active');
-            document.getElementById('MatchDataLink').classList.add('active');
+            if(shiftKey){
+                $("#MatchHistory").show();
+                document.getElementById('MatchHistoryLink').classList.add('active'); 
+            }else{
+                $("#MatchData").show();
+                document.getElementById('MatchDataLink').classList.add('active');
+            }
         }
         
     }
