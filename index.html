@@ -136,6 +136,13 @@
 										Hatch In High Rocket Scored: <a id="hatchInHighRocketScoredSandstormDisplay">0</a>
 										<span class="tooltiptext">Did they place hatch on highest level of rocket?</span></div>
 									</div>
+									<br>
+									<h1></h1>
+									<div class="tooltip">
+									<button onclick="drop('sandstorm', 1);">Drop </button>
+									<br>
+									Items Dropped: <a id="itemsDroppedSandstormDisplay">0</a>
+									<span class="tooltiptext">Did they drop the object they were carrying?</span></div>
 								</td>
 								<td id="sandstormCargo" >
 									<h4>Cargo:</h4>
@@ -168,11 +175,17 @@
 										Cargo In High Rocket Scored: <a id="cargoInHighRocketScoredSandstormDisplay">0</a>
 										<span class="tooltiptext">Did they place cargo in highest level of rocket?</span></div>
 									</div>
+									<br>
+									<h1></h1>
+									<div class="tooltip">
+									<button onclick="undoScore('sandstorm');">Undo Score (Z)</button>
+									<span class="tooltiptext">For when you make the mistakes relating to score.</span></div>
+									<br>
+									<div class="tooltip">
+									<button onclick="undoDrop('sandstorm');">Undo Drop </button>
+									<span class="tooltiptext">For when you make the mistakes relating to dropping stuff.</span></div>
 								</td>
 							</table>
-							<div class="tooltip">
-							<button onclick="undoScore('sandstorm');">Undo (Z)</button>
-							<span class="tooltiptext">For when you make the mistakes.</span></div>
 							<br>
 					</div>
                     <div id="sandstormScoring_right">
@@ -239,6 +252,13 @@
 								<span class="tooltiptext">Did they place a hatch on highest level of rocket?</span></div>
 								<br>
 							</div>
+							<br>
+							<h1></h1>
+							<div class="tooltip">
+							<button onclick="drop('teleop', 1);">Drop </button>
+							<br>
+							Items Dropped: <a id="itemsDroppedTeleopDisplay">0</a>
+							<span class="tooltiptext">Did they drop the object they were carrying?</span></div>
 						</td>
 						<td id="teleopCargo" >
 							<h4>Cargo:</h4>
@@ -273,12 +293,17 @@
 								<span class="tooltiptext">Did they place cargo in highest level of rocket?</span></div>
 								<br>
 							</div>
+							<br>
+							<h1></h1>
+							<div class="tooltip">
+							<button onclick="undoScore('teleop');">Undo Score (Z)</button>
+							<span class="tooltiptext">For when you make the mistakes relating to score.</span></div>
+							<br>
+							<div class="tooltip">
+							<button onclick="undoDrop('teleop');">Undo Drop </button>
+							<span class="tooltiptext">For when you make the mistakes relating to dropping stuff.</span></div>
 						</td>	
 					</table>
-                    <div class="tooltip">
-                    <button onclick="undoScore('teleop');">Undo (Z)</button>
-                    <span class="tooltiptext">For when you make the mistakes.</span></div>
-                    <br>
                 </div>
                 <div id="teleopScoring_center">
                     <h3>Climbing</h3>

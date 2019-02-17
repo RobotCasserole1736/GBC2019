@@ -10,9 +10,9 @@ var Score_Stack = new Array();
 Score_Stack['sandstorm'] = new Array();
 Score_Stack['teleop'] = new Array();
 
-var Score_Stack = new Array();
-Score_Stack['sandstorm'] = new Array();
-Score_Stack['teleop'] = new Array();
+var Drop_Stack = new Array();
+Drop_Stack['sandstorm'] = new Array();
+Drop_Stack['teleop'] = new Array();
 
 var penalty_stack = new Array();
 
@@ -123,9 +123,18 @@ function penalty(period, type){
 
 function undoPenalty(){
 	penalty_stack.pop();
-    
     updateData();
 };
+
+function drop(period, count){
+	Drop_Stack[period].push(count);
+	updateData();
+}
+
+function undoDrop(period){
+	Drop_Stack[period].pop();
+	updateData();
+}
 
 
 /*
@@ -199,6 +208,16 @@ function updateData()
 		else
 			technicalCount++;
 	}		
+	
+	var sandstormDropCount = 0;
+	var teleopDropCount = 0;
+	for(var i = 0; i < Drop_Stack['sandstorm'].length; i++){
+		sandstormDropCount++;
+	}
+	for(var i = 0; i < Drop_Stack['teleop'].length; i++){
+		teleopDropCount++;
+	}
+	
 	// sandstorm data
 	document.getElementById('cargoInCargoShipScoredSandstormDisplay').innerHTML = sandstormCargoShipCount_Cargo;
 	document.getElementById('cargoInHighRocketScoredSandstormDisplay').innerHTML = sandstormRocketHighCount_Cargo;
@@ -210,8 +229,11 @@ function updateData()
 	document.getElementById('hatchInMiddleRocketScoredSandstormDisplay').innerHTML = sandstormRocketMiddleCount_Hatch;
 	document.getElementById('hatchInLowRocketScoredSandstormDisplay').innerHTML = sandstormRocketLowCount_Hatch;
 	
+	document.getElementById('itemsDroppedSandstormDisplay').innerHTML = sandstormDropCount;
+	
 	document.getElementById('penaltyDisplaySandstorm').innerHTML = penaltyCount;
 	document.getElementById('technicalDisplaySandstorm').innerHTML = technicalCount;
+	
 	// teleop data
 	document.getElementById('cargoInCargoShipScoredTeleopDisplay').innerHTML = teleopCargoShipCount_Cargo;
 	document.getElementById('cargoInHighRocketScoredTeleopDisplay').innerHTML = teleopRocketHighCount_Cargo;
@@ -222,6 +244,8 @@ function updateData()
 	document.getElementById('hatchInHighRocketScoredTeleopDisplay').innerHTML = teleopRocketHighCount_Hatch;
 	document.getElementById('hatchInMiddleRocketScoredTeleopDisplay').innerHTML = teleopRocketMiddleCount_Hatch;
 	document.getElementById('hatchInLowRocketScoredTeleopDisplay').innerHTML = teleopRocketLowCount_Hatch;
+	
+	document.getElementById('itemsDroppedTeleopDisplay').innerHTML = teleopDropCount;
 	
 	document.getElementById('penaltyDisplayTele').innerHTML = penaltyCount;
 	document.getElementById('technicalDisplayTele').innerHTML = technicalCount;
@@ -254,6 +278,8 @@ function saveData()
 	matchData += document.getElementById('hatchInMiddleRocketScoredSandstormDisplay').innerHTML + ",";
 	matchData += document.getElementById('hatchInLowRocketScoredSandstormDisplay').innerHTML + ",";
 	
+	matchData += document.getElementById('itemsDroppedSandstormDisplay').innerHTML + ",";
+	
 	matchData += samdstormHatch[0] + "," + samdstormHatch[1] + ",";
 	if(document.getElementById("startingPositionLevel1").checked)
 		matchData += "Lv1,";
@@ -274,6 +300,8 @@ function saveData()
 	matchData += document.getElementById('hatchInHighRocketScoredTeleopDisplay').innerHTML + ",";
 	matchData += document.getElementById('hatchInMiddleRocketScoredTeleopDisplay').innerHTML + ",";
 	matchData += document.getElementById('hatchInLowRocketScoredTeleopDisplay').innerHTML + ",";
+	
+	matchData += document.getElementById('itemsDroppedTeleopDisplay').innerHTML + ",";
 	
 	matchData += document.getElementById("shootingAccuracy").value + ",";
 	matchData += document.getElementById("groundPickupFuel").checked + ",";
@@ -322,6 +350,7 @@ function resetForm()
 	// sandstorm data reset
 	fuel_Stack['sandstorm'] = new Array();
 	Score_Stack['sandstorm'] = new Array();
+	Drop_Stack['sandstorm'] = new Array();
 	document.getElementById("startingPositionBoiler").checked = false;
 	document.getElementById("startingPositionCenter").checked = false;
 	document.getElementById("startingPositionLoading").checked = false;
@@ -333,6 +362,7 @@ function resetForm()
 	// teleop data reset
 	fuel_Stack['teleop'] = new Array();
 	Score_Stack['teleop'] = new Array();
+	Drop_Stack['teleop'] = new Array();
 	document.getElementById("shootingAccuracy").value = 0;
 	document.getElementById("groundPickupFuel").checked = false;
 	document.getElementById("groundPickupGear").checked = false;
