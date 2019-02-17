@@ -60,10 +60,10 @@ function keyReader(evt) {
 	}else{
 		period='none'
 	}
-    
+    evt.preventDefault();
     //Tab swapping
     if(evt.keyCode==9){
-        evt.preventDefault();
+        
         if (periodreader=='#MatchData'){
             $("#MatchData").hide();
             document.getElementById('MatchDataLink').classList.remove('active');
@@ -173,6 +173,7 @@ function keyReader(evt) {
 		}
 		//Space key
 		else if (evt.keyCode == 32) {
+            drop(period, 1)
 		}
 		//Z key
 		else if (evt.keyCode == 90) {
@@ -182,6 +183,11 @@ function keyReader(evt) {
 		else if (evt.keyCode == 88) {
 			undoPenalty();
 		}
+        //C key
+        else if (evt.keyCode == 67){
+            undoDrop(period)
+        }
+        
 	}
 }
 function cargoScore(period, type, count){
