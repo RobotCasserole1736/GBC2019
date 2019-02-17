@@ -40,7 +40,45 @@ function keyReader(evt) {
 	}else{
 		period='none'
 	}
-
+    
+    //Tab swapping
+    if(evt.keyCode==9){
+        evt.preventDefault();
+        if (periodreader=='#MatchData'){
+            $("#MatchData").hide();
+            $("#SandstormData").show();
+            document.getElementById('MatchDataLink').classList.remove('active');
+            document.getElementById('SandstormDataLink').classList.add('active');
+        }else if(periodreader=='#SandstormData'){
+            $("#SandstormData").hide();
+            $("#TeleoperatedData").show();
+            document.getElementById('SandstormDataLink').classList.remove('active');
+            document.getElementById('TeleoperatedDataLink').classList.add('active');
+        }else if(periodreader=='#TeleoperatedData'){
+            $("#TeleoperatedData").hide();
+            $("#PostMatch").show();
+            document.getElementById('TeleoperatedDataLink').classList.remove('active');
+            document.getElementById('MatchDataButton').classList.add('active');
+        }else if(periodreader=='#PostMatch'){
+            $("#PostMatch").hide();
+            $("#MatchHistory").show();
+            document.getElementById('MatchDataButton').classList.remove('active');
+            document.getElementById('MatchHistoryLink').classList.add('active');
+        }else if(periodreader=='#MatchHistory'){
+            $("#MatchHistory").hide();
+            $("#About").show();
+            document.getElementById('MatchHistoryLink').classList.remove('active');
+            document.getElementById('AboutLink').classList.add('active');
+        }else if(periodreader=='#About'){
+            $("#About").hide();
+            $("#MatchData").show();
+            document.getElementById('AboutLink').classList.remove('active');
+            document.getElementById('MatchDataLink').classList.add('active');
+        }
+        
+    }
+    
+    
 	evt = evt || window.event;
 	if(period!='none'){
 		//Q key
