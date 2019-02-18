@@ -43,17 +43,17 @@
             <br>
         </div>
         <ul class='tabs'>
-            <li><a href='#MatchData' id="MatchDataLink">Match Info</a>
+            <li><a href='#MatchData'>Match Info</a>
             </li>
-            <li><a href='#SandstormData' id="SandstormDataLink">Sandstorm</a>
+            <li><a href='#SandstormData'>Sandstorm</a>
             </li>
-            <li><a href='#TeleoperatedData' id="TeleoperatedDataLink">Teleop</a>
+            <li><a href='#TeleoperatedData'>Teleop</a>
             </li>
             <li><a href='#PostMatch' id="MatchDataButton">Post Match</a>
             </li>
             <li><a href='#MatchHistory' id="MatchHistoryLink">Match History</a>
             </li>
-            <li><a href='#About' id="AboutLink">About</a>
+            <li><a href='#About'>About</a>
             </li>
         </ul>
 
@@ -93,117 +93,55 @@
                 <div id="sandstormScoring"></div>
                     <div id="sandstormScoring_left" >
                         <h3>Starting Position</h3>
-                        <div class="tooltip">
                         <form action=" ">
                             <input id="startingPositionLevel1" type="radio" name="position"> Level 1<br>
                             <input id="startingPositionLevel2" type="radio" name="position"> Level 2<br>
                         </form>
-                        <span class="tooltiptext">What level did they start at?</span></div>
                         <br>
-						</div>
                     </div>
                     <div id="sandstormScoring_center" >
-							<h3>Scoring</h3>
-							<table id="sandstormScoringTable" >
-								<td id="sandstormHatches" >
-									<h4>Hatches:</h4>
-									<div id="sandstormHatchesInCargoShip" >Cargo Ship:
-										<br>
-										<div class="tooltip">
-										<button onclick="hatchScore('sandstorm', 'hatch cargo ship', 1);">Hatch (A)</button>
-										<br>
-										Hatch In Cargo Ship Scored: <a id="hatchInCargoShipScoredSandstormDisplay">0</a>
-										<span class="tooltiptext">Did they place hatch on cargo ship?</span></div>
-									</div>
-									<h6></h6>
-									<div id="sandstormHatchesInRocket" >Rocket:
-										<br>
-										<div class="tooltip">
-										<button onclick="hatchScore('sandstorm', 'hatch low', 1);">Hatch Low (S)</button>
-										<br>
-										Hatch In Low Rocket Scored: <a id="hatchInLowRocketScoredSandstormDisplay">0</a>
-										<span class="tooltiptext">Did they place hatch on lowest level of rocket?</span></div>
-										<br>
-										<div class="tooltip">
-										<button onclick="hatchScore('sandstorm', 'hatch middle', 1);">Hatch Middle (D)</button>
-										<br>
-										Hatch In Middle Rocket Scored: <a id="hatchInMiddleRocketScoredSandstormDisplay">0</a>
-										<span class="tooltiptext">Did they place hatch on middle level of rocket?</span></div>
-										<br>
-										<div class="tooltip">
-										<button onclick="hatchScore('sandstorm', 'hatch high', 1);">Hatch High (F)</button>
-										<br>
-										Hatch In High Rocket Scored: <a id="hatchInHighRocketScoredSandstormDisplay">0</a>
-										<span class="tooltiptext">Did they place hatch on highest level of rocket?</span></div>
-									</div>
-									<br>
-									<h1></h1>
-									<div class="tooltip">
-									<button onclick="drop('sandstorm', 1);">Drop (Space)</button>
-									<br>
-									Items Dropped: <a id="itemsDroppedSandstormDisplay">0</a>
-									<span class="tooltiptext">Did they drop the object they were carrying?</span></div>
-								</td>
-								<td id="sandstormCargo" >
-									<h4>Cargo:</h4>
-									<div id="sandstormCargoInCargoShip" >Cargo Ship:
-										<br>
-										<div class="tooltip">
-										<button onclick="cargoScore('sandstorm', 'cargo ship', 1);">Cargo (Q)</button>
-										<br>
-										Cargo In Cargo Ship Scored: <a id="cargoInCargoShipScoredSandstormDisplay">0</a>
-										<span class="tooltiptext">Did they place cargo in cargo ship?</span></div>
-									</div>
-									<h6></h6>
-									<div id="sandstormCargoInRocket" >Rocket:
-										<br>
-										<div class="tooltip">
-										<button onclick="cargoScore('sandstorm', 'cargo low', 1);">Cargo Low (W)</button>
-										<br>
-										Cargo In Low Rocket Scored: <a id="cargoInLowRocketScoredSandstormDisplay">0</a>
-										<span class="tooltiptext">Did they place cargo in lowest level of rocket?</span></div>
-										<br>
-										<div class="tooltip">
-										<button onclick="cargoScore('sandstorm', 'cargo middle', 1);">Cargo Middle (E)</button>
-										<br>
-										Cargo In Middle Rocket Scored: <a id="cargoInMiddleRocketScoredSandstormDisplay">0</a>
-										<span class="tooltiptext">Did they place cargo in middle level of rocket?</span></div>
-										<br>
-										<div class="tooltip">
-										<button onclick="cargoScore('sandstorm', 'cargo high', 1);">Cargo High (R)</button>
-										<br>
-										Cargo In High Rocket Scored: <a id="cargoInHighRocketScoredSandstormDisplay">0</a>
-										<span class="tooltiptext">Did they place cargo in highest level of rocket?</span></div>
-									</div>
-									<br>
-									<h1></h1>
-									<div class="tooltip">
-									<button onclick="undoScore('sandstorm');">Undo Score (Z)</button>
-									<span class="tooltiptext">For when you make the mistakes relating to score.</span></div>
-									<br>
-									<div class="tooltip">
-									<button onclick="undoDrop('sandstorm');">Undo Drop (C)</button>
-									<span class="tooltiptext">For when you make the mistakes relating to dropping stuff.</span></div>
-								</td>
-							</table>
-							<br>
-					</div>
+                            <h3>Scoring</h3>
+                            <div id="sandstormCargoInCargoShip">Cargo Ship:
+                                    <button onclick="cargoScore('sandstorm', 'cargo ship', 1);">Cargo</button>
+                                    <button onclick="hatchScore('sandstorm', 'cargo ship', 1);">Hatch</button>
+                                </div>  
+                            Cargo In Cargo Ship Scored: <a id="cargoInCargoShipScoredSandstormDisplay">0</a>
+                            <br>
+                            hatch In Cargo Ship Scored: <a id="hatchInCargoShipScoredSandstormDisplay">0</a>
+                            <div id="sandstormCargoInRocket">Rocket:
+                                <button onclick="cargoScore('sandstorm', 'high', 1);">Cargo High</button>
+                                <button onclick="cargoScore('sandstorm', 'middle', 1);">Cargo Middle</button>
+                                <button onclick="cargoScore('sandstorm', 'low', 1);">Cargo Low</button>
+                                <br>
+                                <button onclick="hatchScore('sandstorm', 'high', 1);">Hatch High</button>
+                                <button onclick="hatchScore('sandstorm', 'middle', 1);">Hatch Middle</button>
+                                <button onclick="hatchScore('sandstorm', 'low', 1);">Hatch Low</button>
+                            </div>  
+    
+                            Cargo In High Rocket Scored: <a id="cargoInHighRocketScoredSandstormDisplay">0</a>
+                            <br>
+                            Cargo In Middle Rocket Scored: <a id="cargoInMiddleRocketScoredSandstormDisplay">0</a>
+                            <br>
+                            Cargo In Low Rocket Scored: <a id="cargoInLowRocketScoredSandstormDisplay">0</a>
+                            <br>
+                            Hatch In High Rocket Scored: <a id="hatchInHighRocketScoredSandstormDisplay">0</a>
+                            <br>
+                            Hatch In Middle Rocket Scored: <a id="hatchInMiddleRocketScoredSandstormDisplay">0</a>
+                            <br>
+                            Hatch In Low Rocket Scored: <a id="hatchInLowRocketScoredSandstormDisplay">0</a>
+                            <button onclick="undoCargoScore('sandstorm');">Undo</button>
+                            <br>
+                        </div>
                     <div id="sandstormScoring_right">
                         <h3>Penalties</h3>
-                        <div class="tooltip">
-                        <button onclick="penalty('sandstorm', 'penalty');">Penalty (J)</button>
-                        <span class="tooltiptext">Did the robot get a penalty?</span></div>
-                        <div class="tooltip">
-                        <button onclick="penalty('sandstorm', 'technical');">Technical Foul (K)</button>
-                        <span class="tooltiptext">Did the robot get a tech foul?</span></div>
+                        <button onclick="penalty('sandstorm', 'penalty');">Penalty</button>
+                        <button onclick="penalty('sandstorm', 'technical');">Technical Foul</button>
                         <br>
                         <a>Penalties: </a><a id="penaltyDisplaySandstorm">0</a>
                         <br>
                         <a>Technical Fouls: </a><a id="technicalDisplaySandstorm">0</a>
                         <br>
-                        <div class="tooltip">
-                        <button onclick="undoPenalty();">Undo Penalty (X)</button>
-                        <span class="tooltiptext">For when you accidentally gave out a foul.</span></div>
+                        <button onclick="undoPenalty();">Undo Penalty</button>
                     </div>
                 </div>
             </div>   
@@ -217,140 +155,72 @@
 
             <div id="teleopScoring">
                 <div id="teleopScoring_left" >
-                    <h3>Scoring</h3>
-					<table id="teleopScoringTable" >
-						<td id="teleopHatches" >
-							<h4>Hatches:</h4>
-							<div id="teleopHatchesInCargoShip">Cargo Ship:
-								<br>
-								<div class="tooltip">
-								<button onclick="hatchScore('teleop', 'hatch cargo ship', 1);">Hatch (A)</button>
-								<br>
-								Hatch In Cargo Ship Scored: <a id="hatchInCargoShipScoredTeleopDisplay">0</a>
-								<span class="tooltiptext">Did they place a hatch on cargo ship?</span></div>
-								<br>
-							</div>
-							<h6></h6>
-							<div id="teleopHatchesInRocket">Rocket:
-								<br>
-								<div class="tooltip">
-								<button onclick="hatchScore('teleop', 'hatch low', 1);">Hatch Low (S)</button>
-								<br>
-								Hatch In Low Rocket Scored: <a id="hatchInLowRocketScoredTeleopDisplay">0</a>
-								<span class="tooltiptext">Did they place a hatch on lowest level of rocket?</span></div>
-								<br>
-								<div class="tooltip">
-								<button onclick="hatchScore('teleop', 'hatch middle', 1);">Hatch Middle (D)</button>
-								<br>
-								Hatch In Middle Rocket Scored: <a id="hatchInMiddleRocketScoredTeleopDisplay">0</a>
-								<span class="tooltiptext">Did they place a hatch on middle level of rocket?</span></div>
-								<br>
-								<div class="tooltip">
-								<button onclick="hatchScore('teleop', 'hatch high', 1);">Hatch High (F)</button>
-								<br>
-								Hatch In High Rocket Scored: <a id="hatchInHighRocketScoredTeleopDisplay">0</a>
-								<span class="tooltiptext">Did they place a hatch on highest level of rocket?</span></div>
-								<br>
-							</div>
-							<br>
-							<h1></h1>
-							<div class="tooltip">
-							<button onclick="drop('teleop', 1);">Drop (Space)</button>
-							<br>
-							Items Dropped: <a id="itemsDroppedTeleopDisplay">0</a>
-							<span class="tooltiptext">Did they drop the object they were carrying?</span></div>
-						</td>
-						<td id="teleopCargo" >
-							<h4>Cargo:</h4>
-							<div id="teleopCargoInCargoShip">Cargo Ship:
-								<br>
-								<div class="tooltip">
-								<button onclick="cargoScore('teleop', 'cargo ship', 1);">Cargo (Q)</button>
-								<br>
-								Cargo In Cargo Ship Scored: <a id="cargoInCargoShipScoredTeleopDisplay">0</a>
-								<span class="tooltiptext">Did they place cargo in cargo ship?</span></div>
-								<br>
-							</div>
-							<h6></h6>
-							<div id="teleopCargoInRocket">Rocket:
-								<br>
-								<div class="tooltip">
-								<button onclick="cargoScore('teleop', 'cargo low', 1);">Cargo Low (W)</button>
-								<br>
-								Cargo In Low Rocket Scored: <a id="cargoInLowRocketScoredTeleopDisplay">0</a>
-								<span class="tooltiptext">Did they place cargo in lowest level of rocket?</span></div>
-								<br>
-								<div class="tooltip">
-								<button onclick="cargoScore('teleop', 'cargo middle', 1);">Cargo Middle (E)</button>
-								<br>
-								Cargo In Middle Rocket Scored: <a id="cargoInMiddleRocketScoredTeleopDisplay">0</a>
-								<span class="tooltiptext">Did they place cargo in middle level of rocket?</span></div>
-								<br>
-								<div class="tooltip">
-								<button onclick="cargoScore('teleop', 'cargo high', 1);">Cargo High (R)</button>
-								<br>
-								Cargo In High Rocket Scored: <a id="cargoInHighRocketScoredTeleopDisplay">0</a>
-								<span class="tooltiptext">Did they place cargo in highest level of rocket?</span></div>
-								<br>
-							</div>
-							<br>
-							<h1></h1>
-							<div class="tooltip">
-							<button onclick="undoScore('teleop');">Undo Score (Z)</button>
-							<span class="tooltiptext">For when you make the mistakes relating to score.</span></div>
-							<br>
-							<div class="tooltip">
-							<button onclick="undoDrop('teleop');">Undo Drop (C)</button>
-							<span class="tooltiptext">For when you make the mistakes relating to dropping stuff.</span></div>
-						</td>	
-					</table>
-                </div>
+                        <h3>Scoring</h3>
+                        <div id="teleopCargoInCargoShip">Cargo Ship:
+                            <button onclick="cargoScore('teleop', 'cargo ship', 1);">Cargo</button>
+                            <button onclick="hatchScore('teleop', 'cargo ship', 1);">Hatch</button>
+                        </div>  
+
+                        Cargo In Cargo Ship Scored: <a id="cargoInCargoShipScoredTeleopDisplay">0</a>
+                        <br>
+                        Hatch In Cargo Ship Scored: <a id="hatchInCargoShipScoredTeleopDisplay">0</a>
+                        <br>
+                        <div id="teleopCargoInRocket">Rocket:
+                            <button onclick="cargoScore('teleop', 'high', 1);">Cargo High</button>
+							<button onclick="cargoScore('teleop', 'middle', 1);">Cargo Middle</button>
+                            <button onclick="cargoScore('teleop', 'low', 1);">Cargo Low</button>
+                            <br>
+                            <button onclick="hatchScore('teleop', 'high', 1);">Hatch High</button>
+							<button onclick="hatchScore('teleop', 'middle', 1);">Hatch Middle</button>
+                            <button onclick="hatchScore('teleop', 'low', 1);">Hatch Low</button>
+                            <br>
+                        </div>  
+
+                        Cargo In High Rocket Scored: <a id="cargoInHighRocketScoredTeleopDisplay">0</a>
+						<br>
+						Cargo In Middle Rocket Scored: <a id="cargoInMiddleRocketScoredTeleopDisplay">0</a>
+                        <br>
+						Cargo In Low Rocket Scored: <a id="cargoInLowRocketScoredTeleopDisplay">0</a>
+                        <br>
+                        Hatch In High Rocket Scored: <a id="hatchInHighRocketScoredTeleopDisplay">0</a>
+                        <br>
+                        Hatch In Middle Rocket Scored: <a id="hatchInMiddleRocketScoredTeleopDisplay">0</a>
+                        <br>
+                        Hatch In Low Rocket Scored: <a id="hatchInLowRocketScoredTeleopDisplay">0</a>
+                        <button onclick="undoCargoScore('teleop');">Undo</button>
+                        <br>
+                    </div>
                 <div id="teleopScoring_center">
                     <h3>Climbing</h3>
-                    <div class="tooltip">
                     <form action=" ">
-							<input id="NoClimb" type="radio" name="position"> No Climb<br>
                             <input id="Level1" type="radio" name="position"> Level 1<br>
                             <input id="Level2" type="radio" name="position"> Level 2<br>
                             <input id="Level3" type="radio" name="position"> Level 3<br>
                         </form>
-                        <span class="tooltiptext">What level did they climb to?</span></div>
                         <br>
-                        <div class="tooltip">Climb Time: <a id="climbTime">0 seconds</a>
+                        Climb Time: <a id="climbTime">0 seconds</a>
                             <div id="shortslider">
                             <input class="bar" type="range" id ="climbSpeedSlider" min="0" max="30" value ="0" onchange="updateData();">
                             <span class="highlight"></span>
                             </div>   
-                        <span class="tooltiptext">How long did it take them to climb?</span></div>
                         <br>
-                    <div class="tooltip">
                     Climb Attempted: <input type="checkbox" id="climbAttempt" onchange="updateData();">
-                    <span class="tooltiptext">Did they attempt to climb?</span></div>
                     <br> 
-                    <div class="tooltip">
                     Climb Succesful: <input type="checkbox" id="climbAttempt" onchange="updateData();">
-                    <span class="tooltiptext">Did they succesfully climb?</span></div>
                     <br>  
-                    <div class="tooltip">Assist Climb: <input type="checkbox" id="assisistClimb" onchange="updateData();"><span class="tooltiptext">Did they help someone else climb?</span></div>
+                    Assist Climb: <input type="checkbox" id="assisistClimb" onchange="updateData();">
                     <br><br>
                 </div>
                 <div id="teleopScoring_right">
-                    <h3>Penalties</h3>
-                    <div class="tooltip">
-                    <button onclick="penalty('teleop', 'penalty');">Penalty (J)</button>
-                    <span class="tooltiptext">Did the robot get a penalty?</span></div>
-                    
-                    <div class="tooltip">
-                    <button onclick="penalty('teleop', 'technical');">Technical Foul (K)</button>
-                    <span class="tooltiptext">Did the robot get a tech foul?</span></div>
+                    <h3>Penalty</h3>
+                    <button onclick="penalty('teleop', 'penalty');">Penalty</button>
+                    <button onclick="penalty('teleop', 'technical');">Technical Foul</button>
                     <br>
                     Penalties: <a id="penaltyDisplayTele">0</a>
                     <br>
                     Technical Fouls: <a id="technicalDisplayTele">0</a>
                     <br>
-                    <div class="tooltip">
-                    <button onclick="undoPenalty();">Undo Penalty (X)</button>
-                    <span class="tooltiptext">For when you accidentally gave out a foul.</span></div>
+                    <button onclick="undoPenalty();">Undo Penalty</button>
                     <br>
                     </div>
                 </div>
@@ -363,50 +233,35 @@
             <!-- ----------------------------- -->
 
             <!--Bad Human Player: <input type="checkbox" id="humanPlayerAbility""><br>-->
-            <div class="tooltip">
             Is Cheesy Poofs: <input type="checkbox" id="isTheyCheezyPoofs">
-            <span class="tooltiptext">You should probably set Overall Rating to Top Team in that case.</span></div>
             <br>
-            <div class="tooltip">
             Can High Place: <input type="checkbox" id="canPlaceHigh">
-            <span class="tooltiptext">Could they place things on the top of the rocket?</span></div>
             <br>
-            <div class="tooltip">
             Can Do Mid: <input type="checkbox" id="canPlaceMid">
-            <span class="tooltiptext">Could they place things on the middle of the rocket?</span></div>
             <br>
-            <div class="tooltip">
             Can Do Low: <input type="checkbox" id="canPlaceLow">
-            <span class="tooltiptext">Could they place things at bottom of rocket or cargo ship?</span></div>
             <br>
-            <div class="tooltip">
             Can Do Floor Pickup: <input type="checkbox" id="canFloorPickup">
-            <span class="tooltiptext">Can they pick up hatches off the floor?</span></div>
             <br><br>
-            <div class="tooltip">
+
             Driver Rating : <a id="driverRatingDisplay">Little or No Movement</a>
             <div id="shortslider">
             <input class="bar" type="range" id ="driverRating" min="0" max="3" value ="0" onchange="updateData();">
             <span class="highlight"></span>
-            <span class="tooltiptext">How well did they drive?</span></div>
             </div>
             <br>
-            <div class="tooltip">
             Defense Rating : <a id="defenseRatingDisplay">Little or No Movement</a>
             <div id="shortslider">
             <input class="bar" type="range" id ="defenseRating" min="0" max="3" value ="0" onchange="updateData();">
             <span class="highlight"></span>
-            <span class="tooltiptext">Did they play defense, and if so how well?</span></div>
             </div>
             <br>
-            <div class="tooltip">
             Overall Rating : <a id="overallRatingDisplay">Do Not Pick</a>
             <div id="shortslider">
             <input class="bar" type="range" id ="overallRating" min="0" max="3" value ="0" onchange="updateData();">
             <span class="highlight"></span>
-            <span class="tooltiptext">Should we pick them?</span></div>
             </div>
-            <br>
+            
             <textarea placeholder="Comments" id="comments"></textarea>
             <br>
             <button id="submitReport" onclick="submitReport();">Submit Report</button>
@@ -426,10 +281,8 @@
         <div id="About">
             2019 Scouting Tool for Destination Deep Space. Updated each year by students and mentors from FRC 1736 Robot Casserole.
             <br><br>
-            Andrew Gurik :: Nick Dunne :: Aaron Thune :: Dan Thune :: Tim Delaney :: Zach Yarnot :: Jack Collins :: Tom Millard :: <div class="tooltip">Zoe Schmidt<span class="tooltiptext">Yo.</span></div> :: <div class="tooltip">Miles Hankins <span class="tooltiptext">That's me!</span></div> :: Robert Holeman
+            Andrew Gurik :: Nick Dunne :: Aaron Thune :: Dan Thune :: Tim Delaney :: Zach Yarnot :: Jack Collins :: Tom Millard :: Zoe Schmidt :: Miles Hankins :: Robert Holman
             <br><br>
-			Also, a special thanks to Sir Alfred Mufasa Commit the Frog
-			<br><br>
             <a class="downloadLink" href="data/matchData.csv" download>Download CSV data</a>
         </div>
 
@@ -453,8 +306,6 @@
                 // Bind the click event handler
                 $(this).on('click', 'a', function(e){
                     // Make the old tab inactive.
-                    $active=$(document.getElementsByClassName("active")[0]);
-                    $content=$(document.getElementsByClassName("active")[0].getAttribute("href"));
                     $active.removeClass('active');
                     $content.hide();
 
@@ -468,14 +319,8 @@
 
                     // Prevent the anchor's default click action
                     e.preventDefault();
-                
                 });
-                
-                
-                
             });
-            
-                
             $("#historyPass").hide(0,null);
             document.getElementById("MatchHistoryLink").onclick = function (){
                 var existingData = localStorage.getItem("MatchData");

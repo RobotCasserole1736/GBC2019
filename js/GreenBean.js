@@ -6,13 +6,13 @@
 
 window.onload=function(){updateData()};
 
-var Score_Stack = new Array();
-Score_Stack['sandstorm'] = new Array();
-Score_Stack['teleop'] = new Array();
+var cargo_Stack = new Array();
+cargo_Stack['sandstorm'] = new Array();
+cargo_Stack['teleop'] = new Array();
 
-var Drop_Stack = new Array();
-Drop_Stack['sandstorm'] = new Array();
-Drop_Stack['teleop'] = new Array();
+var hatch_Stack = new Array();
+hatch_Stack['sandstorm'] = new Array();
+hatch_Stack['teleop'] = new Array();
 
 var penalty_stack = new Array();
 
@@ -22,191 +22,84 @@ var driverRatingText = ["Little or No Movement", "Poor Driving", "Good Driving",
 
 
 var unsubmittedData = new Array();
-var shiftKey=false;
-
-document.addEventListener("keydown",function(){
-    if(event.keyCode==16){
-        shiftChecker(1);
-    }else{
-        keyReader(event);
-    }
-	
+document.getElementById("TeleoperatedData").addEventListener("keydown",function(){
+	keyReader(event,'teleop');
+});
+document.getElementById("SandstormData").addEventListener("keydown",function(){
+	keyReader(event,'sandstorm');
 });
 
-document.addEventListener("keyup",function(){
-    if(event.keyCode==16){
-        shiftChecker(0);
-    }
-	
-});
-
-function shiftChecker(checker){
-    if(checker==1){
-        shiftKey=true;
-    }else{
-        shiftKey=false;
-    }
-    
-}
-
-function keyReader(evt) {
-	periodreader=document.getElementsByClassName("active")[0].getAttribute("href")
-
-	if(periodreader=='#SandstormData'){
-		period='sandstorm';
-	}
-	else if(periodreader=='#TeleoperatedData'){
-		period='teleop'
-	}else{
-		period='none'
-	}
-    evt.preventDefault();
-    //Tab swapping
-    if(evt.keyCode==9){
-        
-        if (periodreader=='#MatchData'){
-            $("#MatchData").hide();
-            document.getElementById('MatchDataLink').classList.remove('active');
-            if(shiftKey){
-                $("#About").show();
-                document.getElementById('AboutLink').classList.add('active');
-            }else{
-                $("#SandstormData").show();
-                document.getElementById('SandstormDataLink').classList.add('active');
-            }
-        }else if(periodreader=='#SandstormData'){
-            $("#SandstormData").hide();
-            document.getElementById('SandstormDataLink').classList.remove('active');
-            if(shiftKey){
-                $("#MatchData").show();
-                document.getElementById('MatchDataLink').classList.add('active');
-            }else{
-                $("#TeleoperatedData").show();
-                document.getElementById('TeleoperatedDataLink').classList.add('active');
-            }
-        }else if(periodreader=='#TeleoperatedData'){
-            $("#TeleoperatedData").hide();
-            document.getElementById('TeleoperatedDataLink').classList.remove('active');
-            if (shiftKey){
-                $("#SandstormData").show();
-                document.getElementById('SandstormDataLink').classList.add('active');
-            }else{
-                $("#PostMatch").show();
-                document.getElementById('MatchDataButton').classList.add('active');
-            }
-        }else if(periodreader=='#PostMatch'){
-            $("#PostMatch").hide();
-            document.getElementById('MatchDataButton').classList.remove('active');
-            if(shiftKey){
-                $("#TeleoperatedData").show();
-                document.getElementById('TeleoperatedDataLink').classList.add('active');
-            }else{
-                $("#MatchHistory").show();
-                document.getElementById('MatchHistoryLink').classList.add('active'); 
-            }
-        }else if(periodreader=='#MatchHistory'){
-            $("#MatchHistory").hide();
-            document.getElementById('MatchHistoryLink').classList.remove('active');
-            if(shiftKey){
-                $("#PostMatch").show();
-                document.getElementById('MatchDataButton').classList.add('active');
-            }else{
-                $("#About").show();
-                document.getElementById('AboutLink').classList.add('active');
-            }
-        }else if(periodreader=='#About'){
-            $("#About").hide();
-            document.getElementById('AboutLink').classList.remove('active');
-            if(shiftKey){
-                $("#MatchHistory").show();
-                document.getElementById('MatchHistoryLink').classList.add('active'); 
-            }else{
-                $("#MatchData").show();
-                document.getElementById('MatchDataLink').classList.add('active');
-            }
-        }
-        
-    }
-    
-    
+function keyReader(evt, period) {
 	evt = evt || window.event;
-	if(period!='none'){
-		//Q key
-		if (evt.keyCode == 81) {
-			cargoScore(period, 'cargo ship', 1);
-		}
-		//W key
-		else if (evt.keyCode == 87) {
-			cargoScore(period, 'cargo low', 1);
-		}
-		//E key
-		else if (evt.keyCode == 69) {
-			cargoScore(period, 'cargo middle', 1);
-		}
-		//R key
-		else if (evt.keyCode == 82) {
-			cargoScore(period, 'cargo high', 1);
-		}
-		//A key
-		else if (evt.keyCode == 65) {
-			hatchScore(period, 'hatch cargo ship', 1);
-		}
-		//S key
-		else if (evt.keyCode == 83) {
-			hatchScore(period, 'hatch low', 1);
-		}
-		//D key
-		   else if (evt.keyCode == 68) {
-			hatchScore(period, 'hatch middle', 1);
-		}
-		//F key
-		else if (evt.keyCode == 70) {
-			hatchScore(period, 'hatch high', 1);
-		}
-		//J key
-		else if (evt.keyCode == 74) {
-			penalty(period, 'penalty');
-		}
-		//K key
-		else if (evt.keyCode == 75) {
-			penalty(period, 'technical');
-		}
-		//Space key
-		else if (evt.keyCode == 32) {
-            drop(period, 1)
-		}
-		//Z key
-		else if (evt.keyCode == 90) {
-			undoScore(period);
-		}
-		//X key
-		else if (evt.keyCode == 88) {
-			undoPenalty();
-		}
-        //C key
-        else if (evt.keyCode == 67){
-            undoDrop(period)
-        }
-        
+	//Q key
+	if (evt.keyCode == 81) {
+		cargoScore(period, 'cargo ship', 1);
+	}
+	//W key
+	else if (evt.keyCode == 87) {
+		cargoScore(period, 'low', 1);
+	}
+	//E key
+	else if (evt.keyCode == 69) {
+		cargoScore(period, 'middle', 1);
+	}
+	//R key
+	else if (evt.keyCode == 82) {
+		cargoScore(period, 'high', 1);
+	}
+	//A key
+	else if (evt.keyCode == 65) {
+		hatchScore(period, 'cargo ship', 1);
+	}
+	//S key
+	else if (evt.keyCode == 83) {
+		hatchScore(period, 'low', 1);
+	}
+	//D key
+	   else if (evt.keyCode == 68) {
+		hatchScore(period, 'middle', 1);
+	}
+	//F key
+	else if (evt.keyCode == 70) {
+		hatchScore(period, 'high', 1);
+	}
+	//J key
+	else if (evt.keyCode == 74) {
+		penalty(period, 'penalty');
+	}
+	//K key
+	else if (evt.keyCode == 75) {
+		penalty(period, 'technical');
+	}
+	//Space key
+	else if (evt.keyCode == 32) {
+	}
+	//Z key
+	else if (evt.keyCode == 90) {
+		undoCargoScore(period);
+	}
+	//X key
+	else if (evt.keyCode == 88) {
+		undoPenalty();
 	}
 }
 function cargoScore(period, type, count){
-	Score_Stack[period].push([type,count]);
+	cargo_Stack[period].push([type,count]);
 	updateData();
 };
 
-function undoScore(period){
-	Score_Stack[period].pop();
+function undoCargoScore(period){
+	cargo_Stack[period].pop();
 	updateData();
 };
 
 function hatchScore(period, type, count){
-	Score_Stack[period].push([type,count]);
+	hatch_Stack[period].push([type,count]);
 	updateData();
 };
 
 function undoGearScore(period){
-	Score_Stack[period].pop();
+	hatch_Stack[period].pop();
 	updateData();
 };
 
@@ -217,18 +110,9 @@ function penalty(period, type){
 
 function undoPenalty(){
 	penalty_stack.pop();
+    
     updateData();
 };
-
-function drop(period, count){
-	Drop_Stack[period].push(count);
-	updateData();
-}
-
-function undoDrop(period){
-	Drop_Stack[period].pop();
-	updateData();
-}
 
 
 /*
@@ -253,45 +137,45 @@ function updateData()
 	var teleopRocketMiddleCount_Hatch = 0;
 	var teleopRocketLowCount_Hatch = 0;
 	
-	for(var i = 0; i< Score_Stack['sandstorm'].length; i++){
-		if(Score_Stack['sandstorm'][i][0] == 'cargo ship')
+	for(var i = 0; i< cargo_Stack['sandstorm'].length; i++){
+		if(cargo_Stack['sandstorm'][i][0] == 'cargo ship')
 			sandstormCargoShipCount_Cargo += 1;
-		else if(Score_Stack['sandstorm'][i][0] == 'cargo high')
+		else if(cargo_Stack['sandstorm'][i][0] == 'high')
 			sandstormRocketHighCount_Cargo += 1;
-		else if(Score_Stack['sandstorm'][i][0] == 'cargo middle')
+		else if(cargo_Stack['sandstorm'][i][0] == 'middle')
 			sandstormRocketMiddleCount_Cargo += 1;
-		else if(Score_Stack['sandstorm'][i][0] == 'cargo low')
+		else if(cargo_Stack['sandstorm'][i][0] == 'low')
 			sandstormRocketLowCount_Cargo += 1;
 	}
-	for(var i = 0; i< Score_Stack['sandstorm'].length; i++){
-		if(Score_Stack['sandstorm'][i][0] == 'hatch cargo ship')
+	for(var i = 0; i< hatch_Stack['sandstorm'].length; i++){
+		if(hatch_Stack['sandstorm'][i][0] == 'cargo ship')
 			sandstormCargoShipCount_Hatch += 1;
-		else if(Score_Stack['sandstorm'][i][0] == 'hatch high')
+		else if(hatch_Stack['sandstorm'][i][0] == 'high')
 			sandstormRocketHighCount_Hatch += 1;
-		else if(Score_Stack['sandstorm'][i][0] == 'hatch middle')
+		else if(hatch_Stack['sandstorm'][i][0] == 'middle')
 			sandstormRocketMiddleCount_Hatch += 1;
-		else if(Score_Stack['sandstorm'][i][0] == 'hatch low')
+		else if(hatch_Stack['sandstorm'][i][0] == 'low')
 			sandstormRocketLowCount_Hatch += 1;
 	}
-	for(var i = 0; i< Score_Stack['teleop'].length; i++){
-		if(Score_Stack['teleop'][i][0] == 'cargo ship')
-			teleopCargoShipCount_Cargo += Score_Stack['teleop'][i][1];
-		else if(Score_Stack['teleop'][i][0] == 'cargo high')
-			teleopRocketHighCount_Cargo += Score_Stack['teleop'][i][1];
-		else if(Score_Stack['teleop'][i][0] == 'cargo middle')
-			teleopRocketMiddleCount_Cargo += Score_Stack['teleop'][i][1];
-		else if(Score_Stack['teleop'][i][0] == 'cargo low')
-			teleopRocketLowCount_Cargo += Score_Stack['teleop'][i][1];
+	for(var i = 0; i< cargo_Stack['teleop'].length; i++){
+		if(cargo_Stack['teleop'][i][0] == 'cargo ship')
+			teleopCargoShipCount_Cargo += cargo_Stack['teleop'][i][1];
+		else if(cargo_Stack['teleop'][i][0] == 'high')
+			teleopRocketHighCount_Cargo += cargo_Stack['teleop'][i][1];
+		else if(cargo_Stack['teleop'][i][0] == 'middle')
+			teleopRocketMiddleCount_Cargo += cargo_Stack['teleop'][i][1];
+		else if(cargo_Stack['teleop'][i][0] == 'low')
+			teleopRocketLowCount_Cargo += cargo_Stack['teleop'][i][1];
 	}
-	for(var i = 0; i< Score_Stack['teleop'].length; i++){
-		if(Score_Stack['teleop'][i][0] == 'hatch cargo ship')
-			teleopCargoShipCount_Hatch += Score_Stack['teleop'][i][1];
-		else if(Score_Stack['teleop'][i][0] == 'hatch high')
-			teleopRocketHighCount_Hatch += Score_Stack['teleop'][i][1];
-		else if(Score_Stack['teleop'][i][0] == 'hatch middle')
-			teleopRocketMiddleCount_Hatch += Score_Stack['teleop'][i][1];
-		else if(Score_Stack['teleop'][i][0] == 'hatch low')
-			teleopRocketLowCount_Hatch += Score_Stack['teleop'][i][1];
+	for(var i = 0; i< hatch_Stack['teleop'].length; i++){
+		if(hatch_Stack['teleop'][i][0] == 'cargo ship')
+			teleopCargoShipCount_Hatch += hatch_Stack['teleop'][i][1];
+		else if(hatch_Stack['teleop'][i][0] == 'high')
+			teleopRocketHighCount_Hatch += hatch_Stack['teleop'][i][1];
+		else if(hatch_Stack['teleop'][i][0] == 'middle')
+			teleopRocketMiddleCount_Hatch += hatch_Stack['teleop'][i][1];
+		else if(hatch_Stack['teleop'][i][0] == 'low')
+			teleopRocketLowCount_Hatch += hatch_Stack['teleop'][i][1];
 	}
 
 	var penaltyCount = 0;
@@ -302,16 +186,6 @@ function updateData()
 		else
 			technicalCount++;
 	}		
-	
-	var sandstormDropCount = 0;
-	var teleopDropCount = 0;
-	for(var i = 0; i < Drop_Stack['sandstorm'].length; i++){
-		sandstormDropCount++;
-	}
-	for(var i = 0; i < Drop_Stack['teleop'].length; i++){
-		teleopDropCount++;
-	}
-	
 	// sandstorm data
 	document.getElementById('cargoInCargoShipScoredSandstormDisplay').innerHTML = sandstormCargoShipCount_Cargo;
 	document.getElementById('cargoInHighRocketScoredSandstormDisplay').innerHTML = sandstormRocketHighCount_Cargo;
@@ -323,11 +197,8 @@ function updateData()
 	document.getElementById('hatchInMiddleRocketScoredSandstormDisplay').innerHTML = sandstormRocketMiddleCount_Hatch;
 	document.getElementById('hatchInLowRocketScoredSandstormDisplay').innerHTML = sandstormRocketLowCount_Hatch;
 	
-	document.getElementById('itemsDroppedSandstormDisplay').innerHTML = sandstormDropCount;
-	
 	document.getElementById('penaltyDisplaySandstorm').innerHTML = penaltyCount;
 	document.getElementById('technicalDisplaySandstorm').innerHTML = technicalCount;
-	
 	// teleop data
 	document.getElementById('cargoInCargoShipScoredTeleopDisplay').innerHTML = teleopCargoShipCount_Cargo;
 	document.getElementById('cargoInHighRocketScoredTeleopDisplay').innerHTML = teleopRocketHighCount_Cargo;
@@ -338,8 +209,6 @@ function updateData()
 	document.getElementById('hatchInHighRocketScoredTeleopDisplay').innerHTML = teleopRocketHighCount_Hatch;
 	document.getElementById('hatchInMiddleRocketScoredTeleopDisplay').innerHTML = teleopRocketMiddleCount_Hatch;
 	document.getElementById('hatchInLowRocketScoredTeleopDisplay').innerHTML = teleopRocketLowCount_Hatch;
-	
-	document.getElementById('itemsDroppedTeleopDisplay').innerHTML = teleopDropCount;
 	
 	document.getElementById('penaltyDisplayTele').innerHTML = penaltyCount;
 	document.getElementById('technicalDisplayTele').innerHTML = technicalCount;
@@ -372,8 +241,6 @@ function saveData()
 	matchData += document.getElementById('hatchInMiddleRocketScoredSandstormDisplay').innerHTML + ",";
 	matchData += document.getElementById('hatchInLowRocketScoredSandstormDisplay').innerHTML + ",";
 	
-	matchData += document.getElementById('itemsDroppedSandstormDisplay').innerHTML + ",";
-	
 	matchData += samdstormHatch[0] + "," + samdstormHatch[1] + ",";
 	if(document.getElementById("startingPositionLevel1").checked)
 		matchData += "Lv1,";
@@ -394,8 +261,6 @@ function saveData()
 	matchData += document.getElementById('hatchInHighRocketScoredTeleopDisplay').innerHTML + ",";
 	matchData += document.getElementById('hatchInMiddleRocketScoredTeleopDisplay').innerHTML + ",";
 	matchData += document.getElementById('hatchInLowRocketScoredTeleopDisplay').innerHTML + ",";
-	
-	matchData += document.getElementById('itemsDroppedTeleopDisplay').innerHTML + ",";
 	
 	matchData += document.getElementById("shootingAccuracy").value + ",";
 	matchData += document.getElementById("groundPickupFuel").checked + ",";
@@ -443,8 +308,7 @@ function resetForm()
 
 	// sandstorm data reset
 	fuel_Stack['sandstorm'] = new Array();
-	Score_Stack['sandstorm'] = new Array();
-	Drop_Stack['sandstorm'] = new Array();
+	hatch_Stack['sandstorm'] = new Array();
 	document.getElementById("startingPositionBoiler").checked = false;
 	document.getElementById("startingPositionCenter").checked = false;
 	document.getElementById("startingPositionLoading").checked = false;
@@ -455,8 +319,7 @@ function resetForm()
 
 	// teleop data reset
 	fuel_Stack['teleop'] = new Array();
-	Score_Stack['teleop'] = new Array();
-	Drop_Stack['teleop'] = new Array();
+	hatch_Stack['teleop'] = new Array();
 	document.getElementById("shootingAccuracy").value = 0;
 	document.getElementById("groundPickupFuel").checked = false;
 	document.getElementById("groundPickupGear").checked = false;
