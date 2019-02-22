@@ -60,10 +60,10 @@ function keyReader(evt) {
 	}else{
 		period='none'
 	}
-    evt.preventDefault();
+    
     //Tab swapping
     if(evt.keyCode==9){
-        
+        evt.preventDefault();
         if (periodreader=='#MatchData'){
             $("#MatchData").hide();
             document.getElementById('MatchDataLink').classList.remove('active');
@@ -131,6 +131,7 @@ function keyReader(evt) {
     
 	evt = evt || window.event;
 	if(period!='none'){
+		evt.preventDefault();
 		//Q key
 		if (evt.keyCode == 81) {
 			cargoScore(period, 'cargo ship', 1);
