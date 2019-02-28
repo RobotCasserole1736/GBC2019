@@ -60,10 +60,10 @@ function keyReader(evt) {
 	}else{
 		period='none'
 	}
-    evt.preventDefault();
+    
     //Tab swapping
     if(evt.keyCode==9){
-        
+        evt.preventDefault();
         if (periodreader=='#MatchData'){
             $("#MatchData").hide();
             document.getElementById('MatchDataLink').classList.remove('active');
@@ -131,6 +131,7 @@ function keyReader(evt) {
     
 	evt = evt || window.event;
 	if(period!='none'){
+		evt.preventDefault();
 		//Q key
 		if (evt.keyCode == 81) {
 			cargoScore(period, 'cargo ship', 1);
@@ -229,7 +230,19 @@ function undoDrop(period){
 	Drop_Stack[period].pop();
 	updateData();
 }
+function idScoutingStation() {
+	matchNum = document.getElementById("matchNumber").value;
+	curScoutingStation = document.getElementById("whichRobot").value;
+	matchType = document.getElementById("matchType").value;
 
+	if(matchNum !=null && matchNum !=0 || matchType != "Qualification"){
+
+		//console.log(curScoutingStation);
+		//console.log(matchNum);
+		lookUpTeam(matchNum, curScoutingStation);
+
+	}
+}
 
 /*
  * Update Data from input elements
@@ -252,6 +265,8 @@ function updateData()
 	var teleopRocketHighCount_Hatch = 0;
 	var teleopRocketMiddleCount_Hatch = 0;
 	var teleopRocketLowCount_Hatch = 0;
+	var curScoutingStation;
+
 	
 	for(var i = 0; i< Score_Stack['sandstorm'].length; i++){
 		if(Score_Stack['sandstorm'][i][0] == 'cargo ship')
@@ -360,6 +375,7 @@ function saveData()
 	matchData += document.getElementById("teamNumber").value + ",";
 	matchData += document.getElementById("matchNumber").value + ",";
 	matchData += document.getElementById("matchType").value + ",";
+	matchData += document.getElementById("scoutingStation").value + ","
 
 	// sandstorm tab fields
 	matchData += document.getElementById('cargoInCargoShipScoredSandstormDisplay').innerHTML + ",";
@@ -526,5 +542,39 @@ function serverSubmit(matchData)
     };
 
     xmlhttp.open("GET", "logMatches.php?" + sendData, true);
+    xmlhttp.send();
+}
+function lookUpTeam(matchNum, station)
+{
+    var xmlhttp = new XMLHttpRequest();
+
+    var sendData = "matchNumber="+matchNum+"&station="+station;
+    
+
+    xmlhttp.onreadystatechange = function()
+    {
+        if(xmlhttp.readyState == 4)
+        {
+			teamNum = 0;
+            if(xmlhttp.status == 200)
+            {
+			   //Set Team Number to Retrieved Value
+			   teamNum = xmlhttp.response;
+            }
+            else
+            {
+			   //set Team Number To 0
+			   teamNum = 0;
+			}
+			if(teamNum ==0) {
+				document.getElementById("teamNumber").value = "";
+			}
+			else{
+				document.getElementById("teamNumber").value = teamNum;
+			}
+        }
+    };
+
+    xmlhttp.open("GET", "teamLookup.php?" + sendData, true);
     xmlhttp.send();
 }
