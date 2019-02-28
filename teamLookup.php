@@ -1,5 +1,5 @@
 <?php
-$db = new SQLite3('ScoutingDatabase.db') or die('0');
+$db = new SQLite3('/data/ScoutingDatabase.db') or die('0');
 $matchNumber = $_GET['matchNumber'];
 $station = $_GET['station'];
 $query = "SELECT " . $station . " from MatchSchedule WHERE MatchNum=" . $matchNumber;

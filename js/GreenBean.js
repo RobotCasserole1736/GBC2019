@@ -409,6 +409,7 @@ function serverSubmit(matchData)
     xmlhttp.open("GET", "logMatches.php?" + sendData, true);
     xmlhttp.send();
 }
+
 function lookUpTeam(matchNum, station)
 {
     var xmlhttp = new XMLHttpRequest();
@@ -431,7 +432,7 @@ function lookUpTeam(matchNum, station)
 			   //set Team Number To 0
 			   teamNum = 0;
 			}
-			if(teamNum ==0) {
+			if(teamNum == 0 || isNaN(teamNum)) {
 				document.getElementById("teamNumber").value = "";
 			}
 			else{
