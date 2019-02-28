@@ -68,17 +68,28 @@
                 Match Number
                 <br><br>
                 Match Type
+                <br><br>
+                Scouting Station
             </div>
             <div id="matchFields">
                 <input type="text" id="scoutName" placeholder="*">
                 <br>
-                <input type="tel" id="matchNumber" placeholder="0">
+                <input type="tel" id="matchNumber" placeholder="0" onchange="idScoutingStation()">
                 <br>
                 <select id="matchType">
                       <option value="Qualification">Qualification</option>
                       <option value="Practice">Practice</option>
                       <option value="Elimination">Elimination</option>
                 </select>
+                <br>
+                <select id="whichRobot"onchange="idScoutingStation()">
+                    <option value="red1">Red 1</option>
+                    <option value="red2">Red 2</option>
+                    <option value="red3">Red 3</option>
+                    <option value="blue1">Blue 1</option>
+                    <option value="blue2">Blue 2</option>
+                    <option value="blue3">Blue 3</option>
+              </select>
             </div>
         </div>
 
