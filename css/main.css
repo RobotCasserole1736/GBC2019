@@ -102,32 +102,32 @@ textarea {
 
 #sandstormScoring_left {
     float: left; 
-    width: 25%;
+    width: 33%;
 }
 
 #sandstormScoring_center {
     float: left; 
-    width: 50%;
+    width: 33%;
 }
 
 #sandstormScoring_right {
     float: right; 
-    width: 25%;
+    width: 33%;
 }
 
 #teleopScoring_left  {
     float: left; 
-    width: 50%;
+    width: 33%;
 }
 
 #teleopScoring_center {
     float: left; 
-    width: 25%;
+    width: 33%;
 }
 
 #teleopScoring_right {
     float: right; 
-    width: 25%;
+    width: 33%;
 }
 
 h1 {
@@ -652,35 +652,3 @@ li {
         page-break-after: avoid;
     }
 }
-/*	==============================
-	HoverOverHelp
-	===============================	*/
-
-    .tooltip {
-	
-        position: relative;
-        display: inline-block;
-        
-    }
-    
-    .tooltip .tooltiptext {
-        visibility: hidden;
-        min-width: 160px;
-        max-width: 200px;
-        background-color: black;
-        color: white;
-        opacity: .9;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px 0;
-        
-        
-        position: absolute;
-        z-index: 1;
-        top: -5px;
-        left: 105%;
-    }
-    
-    .tooltip:hover .tooltiptext {
-        visibility: visible;
-    }
