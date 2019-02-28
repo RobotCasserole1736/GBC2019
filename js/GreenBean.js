@@ -235,7 +235,7 @@ function idScoutingStation() {
 	curScoutingStation = document.getElementById("whichRobot").value;
 	matchType = document.getElementById("matchType").value;
 
-	if(matchNum !=null && matchNum !=0 || matchType != "Qualification"){
+	if(matchNum !=null && matchNum !=0 && matchType == "Qualification"){
 
 		//console.log(curScoutingStation);
 		//console.log(matchNum);
