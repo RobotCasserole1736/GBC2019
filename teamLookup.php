@@ -1,5 +1,5 @@
 <?php
-$db = new SQLite3('/data/ScoutingDatabase.db') or die('0');
+$db = new SQLite3('data/ScoutingDatabase.db') or die('0');
 $matchNumber = $_GET['matchNumber'];
 $station = $_GET['station'];
 $query = "SELECT " . $station . " from MatchSchedule WHERE MatchNum=" . $matchNumber;
@@ -9,4 +9,5 @@ while($row = $results->fetchArray()) {
 	$teamNum = $row[0];
 }
 echo json_encode($teamNum);
+$db->close();
 ?>

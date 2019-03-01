@@ -7,13 +7,25 @@ fwrite($file, "\n");
 fclose($file);
 
 //Write to database
-$db = new SQLite3('/data/ScoutingDatabase.db') or die('0');
-$stringFields = array(0, 3, 13, 14, 36);
+$data = str_replace("\n", "", $data);
+$db = new SQLite3('data/ScoutingDatabase.db') or die('0');
+$stringFields = array(0, 3, 13, 32);
+$booleanFields = array(23, 24, 25);
 $fields = explode(",", $data);
-for($x=0; $x<count($stringFields), $x++) {
-	$fields[$stringFields[$x]] = '"' . $fields[$stringFields[$x]] . '"';
+for($x=0; $x<count($stringFields); $x++) {
+	$fields[$stringFields[$x]] = "'" . $fields[$stringFields[$x]] . "'";
+}
+for($x=0; $x<count($booleanFields); $x++) {
+	if($fields[$booleanFields[$x]] == "false"){
+		$fields[$booleanFields[$x]] = "0";
+	}
+	else {
+		$fields[$booleanFields[$x]] = "1";
+	}
 }
 $dataUpdated = implode(",", $fields);
 $query = "INSERT INTO ScoutData VALUES(" . $dataUpdated . ")";
-$db->execute($query);
+echo json_encode($query);
+$db->exec($query);
+$db->close();
 ?>

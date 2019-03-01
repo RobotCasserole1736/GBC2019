@@ -24,7 +24,7 @@ var driverRatingText = ["Little or No Movement", "Poor Driving", "Good Driving",
 var unsubmittedData = new Array();
 var shiftKey=false;
 
-document.addEventListener("keydown",function(){
+document.addEventListener("keydown",function(event){
     if(event.keyCode==16){
         shiftChecker(1);
     }else{
@@ -33,7 +33,7 @@ document.addEventListener("keydown",function(){
 	
 });
 
-document.addEventListener("keyup",function(){
+document.addEventListener("keyup",function(event){
     if(event.keyCode==16){
         shiftChecker(0);
     }
@@ -375,7 +375,7 @@ function saveData()
 	matchData += document.getElementById("teamNumber").value + ",";
 	matchData += document.getElementById("matchNumber").value + ",";
 	matchData += document.getElementById("matchType").value + ",";
-	matchData += document.getElementById("scoutingStation").value + ","
+	// matchData += document.getElementById("whichRobot").value + ","
 
 	// sandstorm tab fields
 	matchData += document.getElementById('cargoInCargoShipScoredSandstormDisplay').innerHTML + ",";
@@ -390,14 +390,16 @@ function saveData()
 	
 	matchData += document.getElementById('itemsDroppedSandstormDisplay').innerHTML + ",";
 	
-	matchData += samdstormHatch[0] + "," + samdstormHatch[1] + ",";
+	// matchData += samdstormHatch[0] + "," + samdstormHatch[1] + ",";
 	if(document.getElementById("startingPositionLevel1").checked)
 		matchData += "Lv1,";
 	else if(document.getElementById("startingPositionLevel2").checked)
 		matchData += "Lv2,";
+	else
+		matchData += "Lv?,";
 
-	matchData += document.getElementById("crossedBaseline").checked + ",";
-	matchData += document.getElementById("hopperPushedSandstorm").checked + ",";
+	// matchData += document.getElementById("crossedBaseline").checked + ",";
+	// matchData += document.getElementById("hopperPushedSandstorm").checked + ",";
 
 
 	// teleop tab fields
@@ -413,15 +415,16 @@ function saveData()
 	
 	matchData += document.getElementById('itemsDroppedTeleopDisplay').innerHTML + ",";
 	
-	matchData += document.getElementById("shootingAccuracy").value + ",";
-	matchData += document.getElementById("groundPickupFuel").checked + ",";
+	// matchData += document.getElementById("shootingAccuracy").value + ",";
+	// matchData += document.getElementById("groundPickupFuel").checked + ",";
 
-	matchData += teleGears[0] + "," + teleGears[1] + ",";
-	matchData += document.getElementById("groundPickupGear").checked + ",";
-	matchData += document.getElementById("drivingAbility").value + ",";
-	matchData += document.getElementById("defenseAbility").value + ",";
+	// matchData += teleGears[0] + "," + teleGears[1] + ",";
+	// matchData += document.getElementById("groundPickupGear").checked + ",";
+	// matchData += document.getElementById("drivingAbility").value + ",";
+	// matchData += document.getElementById("defenseAbility").value + ",";
 	matchData += document.getElementById("climbAttempt").checked + ",";
 	matchData += document.getElementById("climbSuccess").checked + ",";
+	matchData += document.getElementById("assistClimb").checked + ",";
 	matchData += document.getElementById("climbSpeedSlider").value + ",";
 
 	// penalties
@@ -429,10 +432,10 @@ function saveData()
 	matchData += document.getElementById("technicalDisplayTele").innerHTML + ",";
 
 	// post match fields
-	matchData += document.getElementById("humanPlayerAbility").checked + ",";
-	matchData += document.getElementById("pilotAbility").checked + ",";
+	// matchData += document.getElementById("humanPlayerAbility").checked + ",";
+	// matchData += document.getElementById("pilotAbility").checked + ",";
 	matchData += document.getElementById("overallRating").value + ",";
-	matchData += document.getElementById("driveRating").value +",";
+	matchData += document.getElementById("driverRating").value +",";
 	matchData += document.getElementById("defenseRating").value +",";
 	
 	var comments = document.getElementById("comments").value;
@@ -458,33 +461,36 @@ function resetForm()
 	document.getElementById("matchNumber").value = parseInt(document.getElementById("matchNumber").value) + 1;
 
 	// sandstorm data reset
-	fuel_Stack['sandstorm'] = new Array();
+	// fuel_Stack['sandstorm'] = new Array();
 	Score_Stack['sandstorm'] = new Array();
 	Drop_Stack['sandstorm'] = new Array();
-	document.getElementById("startingPositionBoiler").checked = false;
-	document.getElementById("startingPositionCenter").checked = false;
-	document.getElementById("startingPositionLoading").checked = false;
-	document.getElementById("startingPositionLoading").checked = false;
-	document.getElementById("startingPositionLoading").checked = false;
-	document.getElementById("crossedBaseline").checked = false;
-	document.getElementById("hopperPushedSandstorm").checked = false;
+	// document.getElementById("startingPositionBoiler").checked = false;
+	// document.getElementById("startingPositionCenter").checked = false;
+	// document.getElementById("startingPositionLoading").checked = false;
+	document.getElementById("startingPositionLevel1").checked = false;
+	document.getElementById("startingPositionLevel2").checked = false;
+	// document.getElementById("crossedBaseline").checked = false;
+	// document.getElementById("hopperPushedSandstorm").checked = false;
 
 	// teleop data reset
-	fuel_Stack['teleop'] = new Array();
+	// fuel_Stack['teleop'] = new Array();
 	Score_Stack['teleop'] = new Array();
 	Drop_Stack['teleop'] = new Array();
-	document.getElementById("shootingAccuracy").value = 0;
-	document.getElementById("groundPickupFuel").checked = false;
-	document.getElementById("groundPickupGear").checked = false;
-	document.getElementById("drivingAbility").value = 0;
-	document.getElementById("defenseAbility").value = 0;
+	// document.getElementById("shootingAccuracy").value = 0;
+	// document.getElementById("groundPickupFuel").checked = false;
+	// document.getElementById("groundPickupGear").checked = false;
+	// document.getElementById("driverAbility").value = 0;
+	// document.getElementById("defenseAbility").value = 0;
 	document.getElementById("climbAttempt").checked = false;
 	document.getElementById("climbSuccess").checked = false;
+	document.getElementById("assistClimb").checked = false;
+	// document.getElementById("climbSuccess").checked = false;
 	document.getElementById("climbSpeedSlider").value = 0;
 
 	//post match data reset
-	document.getElementById("humanPlayerAbility").checked = false;
-	document.getElementById("pilotAbility").checked = false;
+	// document.getElementById("humanPlayerAbility").checked = false;
+	// document.getElementById("pilotAbility").checked = false;
+	document.getElementById("driverRating").value = 0;
 	document.getElementById("overallRating").value = 0;
 	document.getElementById("comments").value = "";
 
