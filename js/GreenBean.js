@@ -476,6 +476,12 @@ function resetForm()
 	// fuel_Stack['teleop'] = new Array();
 	Score_Stack['teleop'] = new Array();
 	Drop_Stack['teleop'] = new Array();
+	document.getElementById("NoClimb").checked = false;
+	document.getElementById("Level1").checked = false;
+	document.getElementById("Level2").checked = false;
+	document.getElementById("Level3").checked = false;
+	
+	
 	// document.getElementById("shootingAccuracy").value = 0;
 	// document.getElementById("groundPickupFuel").checked = false;
 	// document.getElementById("groundPickupGear").checked = false;
@@ -484,16 +490,24 @@ function resetForm()
 	document.getElementById("climbAttempt").checked = false;
 	document.getElementById("climbSuccess").checked = false;
 	document.getElementById("assistClimb").checked = false;
+	//document.getElementById("dubClimbAssist").checked = false;
 	// document.getElementById("climbSuccess").checked = false;
 	document.getElementById("climbSpeedSlider").value = 0;
 
 	//post match data reset
 	// document.getElementById("humanPlayerAbility").checked = false;
 	// document.getElementById("pilotAbility").checked = false;
+	//CheckBoxes
+	document.getElementById("canPlaceHigh").value = false;
+	document.getElementById("canPlaceMid").value = false
+	document.getElementById("canPlaceLow").value = false;
+	document.getElementById("canFloorPickup").value = false;
+	
 	document.getElementById("driverRating").value = 0;
+	document.getElementById("defenseRating").value = 0;
 	document.getElementById("overallRating").value = 0;
 	document.getElementById("comments").value = "";
-
+	
 	// penalties reset
 	penalty_stack = new Array();
 
