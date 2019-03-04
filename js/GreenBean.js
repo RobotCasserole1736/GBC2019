@@ -397,6 +397,7 @@ function saveData()
 		matchData += "Lv2,";
 	else
 		matchData += "Lv?,";
+	matchData += document.getElementById('exitHAB').checked + ",";
 
 	// matchData += document.getElementById("crossedBaseline").checked + ",";
 	// matchData += document.getElementById("hopperPushedSandstorm").checked + ",";
@@ -422,7 +423,14 @@ function saveData()
 	// matchData += document.getElementById("groundPickupGear").checked + ",";
 	// matchData += document.getElementById("drivingAbility").value + ",";
 	// matchData += document.getElementById("defenseAbility").value + ",";
-	matchData += document.getElementById("climbAttempt").checked + ",";
+	if(document.getElementById("Level1").checked)
+		matchData += "Lv1,";
+	else if(document.getElementById("Level2").checked)
+		matchData += "Lv2,";
+	else if(document.getElementById("Level3").checked)
+		matchData += "Lv3,";
+	else
+		matchData += "Lv0,";
 	matchData += document.getElementById("climbSuccess").checked + ",";
 	matchData += document.getElementById("assistClimb").checked + ",";
 	matchData += document.getElementById("climbSpeedSlider").value + ",";
@@ -437,7 +445,8 @@ function saveData()
 	matchData += document.getElementById("overallRating").value + ",";
 	matchData += document.getElementById("driverRating").value +",";
 	matchData += document.getElementById("defenseRating").value +",";
-	
+	matchData += document.getElementById("diedNoShow").checked + ",";
+
 	var comments = document.getElementById("comments").value;
 	comments = comments.replace(",","_"); //Get rid of commas so we don't mess up CSV
 	comments = comments.replace(/(\r\n|\n|\r)/gm,"  ");  // get rid of any newline characters
@@ -469,6 +478,7 @@ function resetForm()
 	// document.getElementById("startingPositionLoading").checked = false;
 	document.getElementById("startingPositionLevel1").checked = false;
 	document.getElementById("startingPositionLevel2").checked = false;
+	document.getElementById("exitHAB").checked = false;
 	// document.getElementById("crossedBaseline").checked = false;
 	// document.getElementById("hopperPushedSandstorm").checked = false;
 
@@ -487,7 +497,6 @@ function resetForm()
 	// document.getElementById("groundPickupGear").checked = false;
 	// document.getElementById("driverAbility").value = 0;
 	// document.getElementById("defenseAbility").value = 0;
-	document.getElementById("climbAttempt").checked = false;
 	document.getElementById("climbSuccess").checked = false;
 	document.getElementById("assistClimb").checked = false;
 	//document.getElementById("dubClimbAssist").checked = false;
@@ -498,6 +507,7 @@ function resetForm()
 	// document.getElementById("humanPlayerAbility").checked = false;
 	// document.getElementById("pilotAbility").checked = false;
 	//CheckBoxes
+	document.getElementById("diedNoShow").checked = false;
 	document.getElementById("canPlaceHigh").value = false;
 	document.getElementById("canPlaceMid").value = false
 	document.getElementById("canPlaceLow").value = false;
