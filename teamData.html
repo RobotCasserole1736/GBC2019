@@ -30,6 +30,10 @@
                 padding: 20px;
             }
 
+            #basicData {
+                border: 1px solid #FF9933;
+            }
+
         </style>
 
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
@@ -48,7 +52,7 @@
         </div>
 
         <div id="teamData">
-            <table id="basicData" border="1px solid #FF9933">
+            <table id="basicData">
                 <tr>
                     <td>Sandstorm Exit HAB %</td>
                 </tr>
@@ -80,13 +84,13 @@
                     <td>Teleop Avg Cargo Placed High</td>
                 </tr>
                 <tr>
-                    <td>Climb Level 1 % Success</td>
+                    <td>Successful Level 1 Climbs</td>
                 </tr>
                 <tr>
-                    <td>Climb Level 2 % Success</td>
+                    <td>Successful Level 2 Climbs</td>
                 </tr>
                 <tr>
-                    <td>Climb Level 3 % Success</td>
+                    <td>Successful Level 3 Climbs</td>
                 </tr>
                 <tr>
                     <td>Died/No Show %</td>
@@ -117,14 +121,22 @@
                         teamNum = 0;
                         if(xmlhttp.status == 200)
                         {
-                           var arr = JSON.parse(xmlhttp.response);
+                           var results = JSON.parse(xmlhttp.response);
+                           var arr = results[0];
+                           var comments = results[1];
                            var tbl = document.getElementById("basicData");
-                           for(var r = 0; r < arr.length; r++) {
-                                var tr = tbl.insertRow(-1);
+                           for(var r = 0; r < tbl.rows.length; r++) {
+                                var tr = tbl.rows[r];
                                 for(var c=0; c < arr[r].length; c++) {
                                     var cell = tr.insertCell(-1);
                                     cell.innerHTML = arr[r][c];
                                 }
+                           }
+                           var ul = document.getElementById("Comments");
+                           for(var c = 0; c < comments.length; c++) {
+                                var li = document.createElement("li");
+                                li.appendChild(document.createTextNode(comments[c]));
+                                ul.appendChild(li);
                            }
                         }
                     }

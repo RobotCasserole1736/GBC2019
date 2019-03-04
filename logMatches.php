@@ -9,8 +9,8 @@ fclose($file);
 //Write to database
 $data = str_replace("\n", "", $data);
 $db = new SQLite3('data/ScoutingDatabase.db') or die('0');
-$stringFields = array(0, 3, 13, 32);
-$booleanFields = array(23, 24, 25);
+$stringFields = array(0, 3, 13, 24, 34);
+$booleanFields = array(14, 25, 26, 33);
 $fields = explode(",", $data);
 for($x=0; $x<count($stringFields); $x++) {
 	$fields[$stringFields[$x]] = "'" . $fields[$stringFields[$x]] . "'";
