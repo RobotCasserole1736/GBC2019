@@ -387,7 +387,7 @@ function saveData()
 	matchData += document.getElementById('hatchInMiddleRocketScoredSandstormDisplay').innerHTML + ",";
 	matchData += document.getElementById('hatchInLowRocketScoredSandstormDisplay').innerHTML + ",";
 	
-	matchData += document.getElementById('itemsDroppedSandstormDisplay').inne
+	matchData += document.getElementById('itemsDroppedSandstormDisplay').innerHTML + ",";
 
 	if(document.getElementById("startingPositionLevel1").checked)
 		matchData += "Lv1,";

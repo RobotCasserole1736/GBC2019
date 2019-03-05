@@ -30,7 +30,7 @@
                 padding: 20px;
             }
 
-            #basicData {
+            #basicData, th, td {
                 border: 1px solid #FF9933;
             }
 
@@ -112,6 +112,15 @@
 
         <script type="text/javascript">
             function getTeamData() {
+                //Clear out existing data first
+                var tbl = document.getElementById("basicData");
+                for(var r = 0; r < tbl.rows.length; r++) {
+                    var tr = tbl.rows[r];
+                    while(tr.cells.length > 1) {
+                        tr.deleteCell(-1);
+                    }
+                }
+
                 var xmlhttp = new XMLHttpRequest();
 
                 xmlhttp.onreadystatechange = function()
@@ -127,22 +136,27 @@
                            var tbl = document.getElementById("basicData");
                            for(var r = 0; r < tbl.rows.length; r++) {
                                 var tr = tbl.rows[r];
-                                for(var c=0; c < arr[r].length; c++) {
-                                    var cell = tr.insertCell(-1);
-                                    cell.innerHTML = arr[r][c];
-                                }
+                                var cell = tr.insertCell(-1);
+                                if(arr[r] == null)
+                                    cell.innerHTML = "0";
+                                else
+                                    cell.innerHTML = arr[r];
                            }
                            var ul = document.getElementById("Comments");
-                           for(var c = 0; c < comments.length; c++) {
-                                var li = document.createElement("li");
-                                li.appendChild(document.createTextNode(comments[c]));
-                                ul.appendChild(li);
-                           }
+                           if(comments != null) {
+                               for(var c = 0; c < comments.length; c++) {
+                                    var li = document.createElement("li");
+                                    li.appendChild(document.createTextNode(comments[c]));
+                                    ul.appendChild(li);
+                                }
+                            }
                         }
                     }
                 };
 
-                xmlhttp.open("GET", "teamData.php", true);
+                var teamNumber = document.getElementById("teamNumber").value;
+                var sendData = "?teamNumber=" + teamNumber;
+                xmlhttp.open("GET", "teamData.php" + sendData, true);
                 xmlhttp.send();
             }
         </script>
