@@ -497,6 +497,7 @@ function submitReport()
 {
 	saveData();
 	resetForm();
+	idScoutingStation();
 }
 
 function clearHistory()

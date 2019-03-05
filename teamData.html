@@ -34,6 +34,10 @@
                 border: 1px solid #FF9933;
             }
 
+            li {
+                display: list-item;
+            }
+
         </style>
 
         <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
@@ -119,6 +123,10 @@
                     while(tr.cells.length > 1) {
                         tr.deleteCell(-1);
                     }
+                }
+                var ul = document.getElementById("Comments");
+                while(ul.firstChild) {
+                    ul.removeChild(ul.firstChild);
                 }
 
                 var xmlhttp = new XMLHttpRequest();

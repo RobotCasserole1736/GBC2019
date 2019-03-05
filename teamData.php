@@ -28,7 +28,6 @@ $comments = array();
 while($row = $results->fetchArray()) {
 	array_push($comments, $row[0]);
 }
-array_push($return, $numericData);
 array_push($return, $comments);
 echo json_encode($return);
 $db->close();
