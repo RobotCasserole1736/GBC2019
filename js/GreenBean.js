@@ -266,6 +266,7 @@ function updateData()
 	var teleopRocketMiddleCount_Hatch = 0;
 	var teleopRocketLowCount_Hatch = 0;
 	var curScoutingStation;
+	var printerZZZ = 0;
 
 	
 	for(var i = 0; i< Score_Stack['sandstorm'].length; i++){
@@ -358,6 +359,9 @@ function updateData()
 	
 	document.getElementById('penaltyDisplayTele').innerHTML = penaltyCount;
 	document.getElementById('technicalDisplayTele').innerHTML = technicalCount;
+	
+	console.log("hello");
+	console.log(printerZZZ);
 	document.getElementById('climbTime').innerHTML = document.getElementById('climbSpeedSlider').value + ' seconds';
 	// Post match data
 	document.getElementById('overallRatingDisplay').innerHTML = overallRatingText[parseInt(document.getElementById('overallRating').value)];
@@ -421,7 +425,12 @@ function saveData()
 	matchData += document.getElementById("drivingAbility").value + ",";
 	matchData += document.getElementById("defenseAbility").value + ",";
 	matchData += document.getElementById("climbAttempt").checked + ",";
-	matchData += document.getElementById("climbSuccess").checked + ",";
+	matchData += document.getElementById("climbSuccess").checked + ",";//I think these are the correct names??
+	matchData += document.getElementById("assisistClimb").checked + ",";
+	matchData += document.getElementById("dubAssisistClimb").checked + ",";
+	printerZZZ = document.getElementById("dubAssisistClimb").checked + ",";
+	
+	console.log(matchData);
 	matchData += document.getElementById("climbSpeedSlider").value + ",";
 
 	// penalties
