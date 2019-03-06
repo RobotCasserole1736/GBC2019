@@ -1,11 +1,14 @@
 import requests
 import sqlite3
+import config as cfg
 r = requests.session()
 
-conn = sqlite3.connect('C:\\Users\\FIRSTUser\\Desktop\\254CheezyPoofs\\ScoutingDatabase.db')
+conn = sqlite3.connect('..\\data\\ScoutingDatabase.db')
 c = conn.cursor()
-headers = {'X-TBA-Auth-Key':'9VFw7b8DNtDJ7f6RKy7unkdk3Gl3lUml7EvDcpVQtTZTulMpYOTEu7Dd0DIYabaA'}
-tba  = r.get("https://www.thebluealliance.com/api/v3/event/2018ilch/matches/simple", headers = headers)
+c.execute('DELETE FROM MatchSchedule')
+c.execute('VACUUM')
+headers = {'X-TBA-Auth-Key': cfg.TBA_AUTH_KEY}
+tba  = r.get("https://www.thebluealliance.com/api/v3/event/2019ilch/matches/simple", headers = headers)
 tbAnswer = tba.json()
 for match in tbAnswer:
     if match['comp_level'] == 'qm':
