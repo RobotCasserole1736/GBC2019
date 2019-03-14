@@ -8,7 +8,7 @@ c = conn.cursor()
 c.execute('DELETE FROM MatchSchedule')
 c.execute('VACUUM')
 headers = {'X-TBA-Auth-Key': cfg.TBA_AUTH_KEY}
-tba  = r.get("https://www.thebluealliance.com/api/v3/event/2019ilch/matches/simple", headers = headers)
+tba  = r.get("https://www.thebluealliance.com/api/v3/event/2019ilpe/matches/simple", headers = headers)
 tbAnswer = tba.json()
 for match in tbAnswer:
     if match['comp_level'] == 'qm':
